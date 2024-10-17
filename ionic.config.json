@@ -1,0 +1,8 @@
+{
+  "name": "BioApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "87821b96"
+}
