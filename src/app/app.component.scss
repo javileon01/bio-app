@@ -1,0 +1,19 @@
+/* Ajustes para ion-header */
+ion-header {
+  box-shadow: none;
+}
+
+/* Ajustes para ion-toolbar */
+ion-toolbar {
+  --background: #fbfbfb; /* Cambia este color al que desees */
+}
+
+ion-title{
+  padding-top: 20px;
+}
+
+/* Ajustes para ion-buttons */
+ion-buttons {
+  background-color: #fbfbfb; /* Color de fondo para los botones */
+  color: #000; /* Color del texto del botón */
+}

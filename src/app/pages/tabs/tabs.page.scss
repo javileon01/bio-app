@@ -1,0 +1,14 @@
+ion-tab-bar {
+  position: fixed;
+  top: 56px; /* Ajusta esto según la altura del header */
+  left: 0;
+  right: 0;
+  padding-top: 30px;
+  border-bottom: 2px solid #fbfbfb;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
+}
+
+ion-tab-button {
+  background-color: #fbfbfb;
+}
