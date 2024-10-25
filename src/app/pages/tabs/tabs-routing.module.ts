@@ -12,12 +12,16 @@ const routes: Routes = [
         loadChildren: () => import('../bio-glossari/bio-glossari.module').then(m => m.BioGlossariPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'bioQuestionari',
+        loadChildren: () => import('../bio-questionari/bio-questionari.module').then( m => m.BioQuestionariPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'bioVideos',
+        loadChildren: () => import('../bio-videos/bio-videos.module').then( m => m.BioVideosPageModule)
+      },
+      {
+        path: 'bioPreguntes',
+        loadChildren: () => import('../bio-preguntes/bio-preguntes.module').then( m => m.BioPreguntesPageModule)
       },
       {
         path: '',

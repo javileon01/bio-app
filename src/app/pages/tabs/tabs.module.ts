@@ -7,6 +7,9 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import { BioGlossariPageModule } from '../bio-glossari/bio-glossari.module';
+import { BioQuestionariPageModule } from '../bio-questionari/bio-questionari.module';
+import { BioVideosPageModule } from '../bio-videos/bio-videos.module';
+import { BioPreguntesPageModule } from '../bio-preguntes/bio-preguntes.module';
 
 @NgModule({
   imports: [
@@ -14,7 +17,10 @@ import { BioGlossariPageModule } from '../bio-glossari/bio-glossari.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    BioGlossariPageModule
+    BioGlossariPageModule,
+    BioQuestionariPageModule,
+    BioVideosPageModule,
+    BioPreguntesPageModule
   ],
   declarations: [TabsPage]
 })

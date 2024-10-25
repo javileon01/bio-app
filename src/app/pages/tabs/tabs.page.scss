@@ -7,8 +7,19 @@ ion-tab-bar {
   border-bottom: 2px solid #fbfbfb;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   background-color: #fbfbfb;
+  justify-content: space-around;
 }
 
 ion-tab-button {
+  flex: 1;
+  text-align: center;
   background-color: #fbfbfb;
+  transition: transform 0.2s ease; /* Transición suave */
+  box-shadow: none;
+  --ripple-color: transparent; /* Desactiva el efecto ripple */
+}
+
+/* Intento alternativo con una clase 'selected' o 'tab-selected' */
+ion-tab-button.tab-selected {
+  transform: scale(1.2); /* Agranda el botón cuando está seleccionado */
 }
