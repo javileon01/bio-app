@@ -1,30 +1,31 @@
 <ion-app>
-  <!-- Menú lateral -->
   <ion-menu side="start" menu-id="main-menu" content-id="main-content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menú</ion-title>
+        <ion-title>Menú Principal</ion-title>
       </ion-toolbar>
     </ion-header>
-    
+  
     <ion-content>
       <ion-list>
-        <ion-item>
-          <ion-label>Informació</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Contacte</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Manual d'usuari</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Webs recomanats</ion-label>
-        </ion-item>
+        <ion-menu-toggle>
+          <ion-item routerLink="/informacio">
+            <ion-label>Informació</ion-label>
+          </ion-item>
+          <ion-item routerLink="/contacte">
+            <ion-label>Contacte</ion-label>
+          </ion-item>
+          <ion-item routerLink="/manual-usuari">
+            <ion-label>Manual d'usuari</ion-label>
+          </ion-item>
+          <ion-item routerLink="/webs-recomanats">
+            <ion-label>Webs recomanats</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
-
+  
   <!-- Header global -->
   <ion-header >
     <ion-toolbar>
@@ -37,6 +38,5 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Main Router Outlet -->
-  <ion-router-outlet id="main-content"></ion-router-outlet>
+  <ion-router-outlet id="main-content"></ion-router-outlet> <!-- Debe coincidir -->
 </ion-app>

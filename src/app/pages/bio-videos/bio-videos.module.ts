@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { BioVideosPageRoutingModule } from './bio-videos-routing.module';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
-
 import { BioVideosPage } from './bio-videos.page';
 
 @NgModule({
