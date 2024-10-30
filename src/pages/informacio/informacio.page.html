@@ -9,8 +9,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <h1>Informaci&oacute;</h1>
-  <p>Aplicaci&oacute; que mostra informaci&oacute; relacionada amb la Biologia...</p>
-  <!-- Resto del contenido -->
+<ion-content>
+  <div class="content-wrapper">
+    <img src="assets/imgs/bioaps.png" alt="BioApS Logo" class="logo">
+
+    <!-- Muestra un mensaje de error si ocurre un problema al cargar los datos -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Sección de información general -->
+    <div *ngIf="listaTexto && listaTexto.length" class="info-section">
+      <div *ngFor="let datosT of listaTexto">
+        <p *ngIf="['app_informaci&oacute;1', 'app_informaci&oacute;2', 'app_informaci&oacute;3'].includes(datosT.localizacion)">
+          {{ datosT.texto }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Sección de versiones -->
+    <div class="versions">
+      <h3>Versions</h3>
+      <div class="version-item">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <p><b>Versi&oacute; 0.8.0 -&gt;</b> Victor Menchero</p>
+      </div>
+      <div class="version-item">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <p><b>Versi&oacute; 2.0.0 (Actual per a Android) -&gt;</b> Iv&aacute;n Iniesta Serrano</p>
+      </div>
+      <div class="version-item">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <p><b>Versi&oacute; 2.0.1 (Actual per a iOs) -&gt;</b> Iv&aacute;n Iniesta Serrano amb la col&middot;laboraci&oacute; d'Aurora Nieves Pedroche i Pablo Ram&oacute;n Prieto</p>
+      </div>
+      <div class="version-item">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <p><b>Versi&oacute; 2.1.1 (Actual per a Android i per a iOS) -&gt;</b> Iv&aacute;n Iniesta Serrano amb la col&middot;laboraci&oacute; d'Aurora Nieves Pedroche, Pablo Ram&oacute;n Prieto i N&uacute;ria Maf&eacute; Llopis</p>
+      </div>
+      <div class="version-item">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <p><b>Versi&oacute; x.x.x ...</b> Iv&aacute;n Iniesta Serrano amb la col&middot;laboraci&oacute; d'Aurora Nieves Pedroche, Pablo Ram&oacute;n Prieto, N&uacute;ria Maf&eacute; Llopis i Javier Le&oacute;n Soler</p>
+      </div>
+    </div>
+  </div>
 </ion-content>

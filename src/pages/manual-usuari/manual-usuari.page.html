@@ -1,14 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Manual d'usuari</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manual d&#39;usuari</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Manual d'usuari</ion-title>
+      <ion-title size="large">Manual d&#39;usuari</ion-title>
     </ion-toolbar>
   </ion-header>
-  <h1>Manual d'usuari</h1>
+  <h1>Manual d&#39;usuari</h1>
 </ion-content>

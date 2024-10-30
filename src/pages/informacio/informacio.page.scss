@@ -1,31 +1,108 @@
 /* Ajustes para ion-toolbar */
 ion-header {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.13);
-}
-
-ion-toolbar {
-    --background: #fbfbfb; /* Cambia este color al que desees */
-
-}
-
-ion-title{
-    color:#000;
-    font-size: 23px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-toolbar {
+    --background: #f8f9fa;
+  }
+  
+  ion-title {
+    color: #333;
+    font-size: 24px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-bottom: 2px;
-}
-
-/* Ajustes para ion-buttons */
-ion-buttons {
-    background-color: #fbfbfb; /* Color de fondo para los botones */
-    color: #1d1d1d; /* Color del texto del botón */
-    padding-left: 13px;
-    padding-bottom: 3px;
-}
-
-ion-button {
+    font-weight: bold;
+  }
+  
+  /* Botón de regreso */
+  ion-button {
+    --background: transparent;
     --background-hover-opacity: 0;
+    --color: #333;
     font-size: 20px;
-}
+  }
+  
+  /* Contenedor principal */
+  .content-wrapper {
+    padding: 20px;
+    background-color: #f4f4f9;
+  }
+  
+  /* Estilo de la imagen/logo */
+  .logo {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    border-radius: 8px;
+    box-shadow: none;
+    border: none;
+  }
 
-
+  /* Sección de información principal */
+.info-section {
+    text-align: justify; /* Justifica el texto para una alineación uniforme */
+    padding-left: 10px;
+    padding-right: 20px;
+    line-height: 1.8; /* Ajusta el espacio entre líneas */
+  }
+  
+  /* Estilo del párrafo dentro de .info-section */
+  .info-section p {
+    font-size: 1.3em; /* Tamaño de fuente para mejorar la legibilidad */
+    margin-bottom: 15px; /* Espacio entre párrafos */
+    color: #555; /* Color gris para suavizar el texto */
+  }
+  
+  /* Texto de información */
+  p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  /* Estilos para la sección de versiones */
+  .versions {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .versions h3 {
+    font-size: 1.3em;
+    color: #0073e6;
+    margin-bottom: 15px;
+  }
+  
+  .version-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .version-item ion-icon {
+    font-size: 1.2em;
+    color: #0073e6;
+    margin-right: 10px;
+  }
+  
+  .version-item p {
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+    color: #d9534f;
+    font-weight: bold;
+    background-color: #f8d7da;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

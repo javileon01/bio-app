@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-webs-recomanats',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebsRecomanatsPage implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {
+    // Puedes inicializar datos aquí si es necesario
+  }
+
+  goBack() {
+    this.navController.back();
   }
 
 }
