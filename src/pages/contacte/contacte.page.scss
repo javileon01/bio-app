@@ -1,0 +1,31 @@
+/* Ajustes para ion-toolbar */
+ion-header {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.13);
+}
+
+ion-toolbar {
+    --background: #fbfbfb; /* Cambia este color al que desees */
+
+}
+
+ion-title{
+    color:#000;
+    font-size: 23px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-bottom: 2px;
+}
+
+/* Ajustes para ion-buttons */
+ion-buttons {
+    background-color: #fbfbfb; /* Color de fondo para los botones */
+    color: #1d1d1d; /* Color del texto del botón */
+    padding-left: 13px;
+    padding-bottom: 3px;
+}
+
+ion-button {
+    --background-hover-opacity: 0;
+    font-size: 20px;
+}
+
+
