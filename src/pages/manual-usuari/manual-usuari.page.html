@@ -5,15 +5,58 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Manual d&#39;usuari</ion-title>
+    <ion-title>Manual d'usuari</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Manual d&#39;usuari</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <h1>Manual d&#39;usuari</h1>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Card para BioGlossari -->
+  <ion-card class="manual-card">
+    <ion-card-content>
+      <div class="section">
+        <img src="assets/imgs/bioglossarimini.png" alt="BioGlossari" class="manual-img" />
+        <p *ngFor="let datosT of listaTexto">
+          <span *ngIf="datosT.localizacion === 'app_instruccionsglo'">{{datosT.texto}}</span>
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para BioPregunta -->
+  <ion-card class="manual-card">
+    <ion-card-content>
+      <div class="section">
+        <img src="assets/imgs/biopreguntesmini.png" alt="BioPregunta" class="manual-img" />
+        <p *ngFor="let datosT of listaTexto">
+          <span *ngIf="datosT.localizacion === 'app_instruccionspre'">{{datosT.texto}}</span>
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para BioQüestionari -->
+  <ion-card class="manual-card">
+    <ion-card-content>
+      <div class="section">
+        <img src="assets/imgs/bioquestionarimini.png" alt="BioQüestionari" class="manual-img" />
+        <p *ngFor="let datosT of listaTexto">
+          <span *ngIf="datosT.localizacion === 'app_instruccionsques'">{{datosT.texto}}</span>
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para BioVídeos -->
+  <ion-card class="manual-card">
+    <ion-card-content>
+      <div class="section">
+        <img src="assets/imgs/biovideosmini.png" alt="BioVídeos" class="manual-img" />
+        <p *ngFor="let datosT of listaTexto">
+          <span *ngIf="datosT.localizacion === 'app_instruccionsvid'">{{datosT.texto}}</span>
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

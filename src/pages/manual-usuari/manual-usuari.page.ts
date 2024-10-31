@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ContenidoService } from '../../services/service-contenido/contenido.service';
 
 @Component({
   selector: 'app-manual-usuari',
@@ -7,15 +8,34 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./manual-usuari.page.scss'],
 })
 export class ManualUsuariPage implements OnInit {
+  listaTexto: any[] = [];
+  errorMessage: string = '';
 
-  constructor(private navController: NavController) { }
+  constructor(
+    private navController: NavController,
+    private contenidoService: ContenidoService
+  ) { }
 
   ngOnInit() {
-    // Puedes inicializar datos aquí si es necesario
+    this.cargarDatos();
+  }
+
+  cargarDatos() {
+    this.contenidoService.obtenerDatosTexto().subscribe({
+      next: (data) => {
+        this.listaTexto = data; // Asigna los datos obtenidos a listaTexto
+      },
+      error: (error) => {
+        this.errorMessage = 'Error al cargar los datos. Inténtalo de nuevo.';
+        console.error(error); // Muestra el error en la consola
+      },
+      complete: () => {
+        console.log('Datos cargados correctamente'); // Este es opcional, solo se ejecuta al completar
+      }
+    });
   }
 
   goBack() {
     this.navController.back();
   }
-
 }

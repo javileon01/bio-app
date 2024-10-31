@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InformacioService {
+export class ContenidoService {
   private apiUrl = 'http://bioaps.uv.es/perapp/infoapp/';
 
   constructor(private http: HttpClient) {}
@@ -15,4 +15,3 @@ export class InformacioService {
     return this.http.get<any>(this.apiUrl);
   }
 }
-

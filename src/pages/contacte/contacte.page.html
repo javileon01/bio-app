@@ -9,11 +9,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Contacte</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <h1>Contacte</h1>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Card para el mensaje de contacto -->
+  <ion-card class="contact-card">
+    <ion-card-header>
+      <ion-card-title>Contacta amb nosaltres</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let datosT of listaTexto">
+        <span *ngIf="datosT.localizacion === 'app_contacte'">{{datosT.texto}}</span>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Card para el correo electrónico -->
+  <ion-card class="email-card">
+    <ion-item lines="none" *ngFor="let datosT of listaTexto" detail="false" [hidden]="datosT.localizacion !== 'app_correu'">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-label>
+        <a href="mailto:{{datosT.texto}}?subject=bioApS" class="email-link">{{datosT.texto}}</a>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+  
 </ion-content>

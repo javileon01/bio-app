@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { InformacioService } from '../../services/service-informacio/informacio.service';
+import { ContenidoService } from '../../services/service-contenido/contenido.service';
 
 @Component({
   selector: 'app-informacio',
@@ -13,7 +13,7 @@ export class InformacioPage implements OnInit {
   
   constructor(
     private navController: NavController,
-    private informacioService: InformacioService
+    private contenidoService: ContenidoService
   ) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class InformacioPage implements OnInit {
   }
 
   cargarDatos() {
-    this.informacioService.obtenerDatosTexto().subscribe({
+    this.contenidoService.obtenerDatosTexto().subscribe({
       next: (data) => {
         this.listaTexto = data; // Asigna los datos obtenidos a listaTexto
       },
