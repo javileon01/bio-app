@@ -1,18 +1,29 @@
 /* Ajustes para ion-toolbar */
 ion-header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  ion-toolbar {
+ion-toolbar {
     --background: #f8f9fa;
-  }
+}
   
-  ion-title {
-    color: #333;
-    font-size: 24px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-  }
+ion-title {
+    color:#000;
+    font-size: 23px;
+    font-family: system-ui, 
+             -apple-system, 
+             BlinkMacSystemFont, 
+             'Segoe UI', 
+             Roboto, 
+             Oxygen, 
+             Ubuntu, 
+             Cantarell, 
+             'Open Sans', 
+             'Helvetica Neue', 
+             sans-serif;
+    padding-bottom: 2px;
+}
+
   
   /* Botón de regreso */
   ion-button {
