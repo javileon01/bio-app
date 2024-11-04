@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="!selectedUrl">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -12,14 +12,26 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="!selectedUrl">
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p *ngIf="!errorMessage && lista.length === 0">Cargando webs recomendadas...</p>
+    <p *ngIf="!errorMessage && lista.length === 0">Cargant webs recomanades...</p>
 
-    <ion-card *ngFor="let datos of lista" class="custom-card">
+    <ion-card *ngFor="let datos of lista" class="custom-card" (click)="openLink(datos)">
       <ion-card-content>
         <img [src]="'http://bioaps.uv.es/site/assets/files/' + datos.id + '/' + datos.imatge" alt="Web Image" />
         <p class="description">{{ datos.descripcio }}</p>
-        <a [href]="datos.enllac" target="_blank" class="enllac">{{ datos.enllac }}</a>
+        <p class="enllac">{{ datos.enllac }}</p>
       </ion-card-content>
     </ion-card>
   </div>
+
+  <!-- Muestra el iframe con la URL seleccionada y el botón Tornar en modo barra -->
+  <div *ngIf="selectedUrl" class="iframe-container">
+    <div class="iframe-header">
+      <ion-button (click)="closeIframe()" fill="clear">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Tornar
+      </ion-button>
+    </div>
+    <iframe [src]="selectedUrl" class="iframe-content"></iframe>
+  </div>
 </ion-content>
+

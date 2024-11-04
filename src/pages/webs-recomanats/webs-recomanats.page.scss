@@ -25,61 +25,83 @@ ion-title {
     padding-bottom: 2px;
 }
 
-/* Ajustes para ion-buttons */
-ion-buttons {
-    background-color: #fbfbfb; /* Color de fondo para los botones */
-    color: #1d1d1d; /* Color del texto del botón */
-    padding-left: 11px;
-    padding-bottom: 3px;
+ion-header ion-button {
+  background-color: #fbfbfb; /* Color de fondo para los botones */
+  color: #1d1d1d; /* Color del texto del botón */
+  padding-left: 11px;
+  padding-bottom: 3px;
+  --background-hover-opacity: 0;
+  font-size: 20px;
 }
 
-ion-button {
-    --background-hover-opacity: 0;
-    font-size: 20px;
-}
-
+/* Estilo del contenido principal */
 .custom-card {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border-radius: 10px; /* Bordes redondeados */
-    margin: 15px; /* Espacio alrededor del card */
-    padding: 10px;
-  }
-  
-  .custom-card ion-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .custom-card img {
-    width: 100%; /* Ocupa el ancho completo */
-    max-width: 250px; /* Limita el tamaño máximo */
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
-  }
-  
-  .enllac {
-    color: #007acc;
-    font-size: 1.4em;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-bottom: 8px;
-  }
-  
-  .description {
-    font-size: 1.4em;
-    color: #000;
-    text-align: center;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px; /* Bordes redondeados */
+  margin: 15px; /* Espacio alrededor del card */
+  padding: 10px;
+}
+
+.custom-card ion-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-card img {
+  width: 100%; /* Ocupa el ancho completo */
+  max-width: 250px; /* Limita el tamaño máximo */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.enllac {
+  color: #007acc;
+  font-size: 1.4em;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 1.4em;
+  color: #000;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos para el iframe */
+.iframe-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.iframe-header {
+  background-color: #fca311; /* Fondo amarillo */
+  padding: 6px;
+  text-align: left; /* Alinea el botón hacia la izquierda */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+
+.iframe-header ion-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; /* Texto en negro */
+  --background-hover-opacity: 0;
+}
+
+.iframe-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
   
 
 

@@ -26,11 +26,11 @@ export class InformacioPage implements OnInit {
         this.listaTexto = data; // Asigna los datos obtenidos a listaTexto
       },
       error: (error) => {
-        this.errorMessage = 'Error al cargar los datos. Inténtalo de nuevo.';
+        this.errorMessage = 'Error en carregar les dades. Intenta&ndash;ho de nou.'; // Mensaje de error
         console.error(error); // Muestra el error en la consola
       },
       complete: () => {
-        console.log('Datos cargados correctamente'); // Este es opcional, solo se ejecuta al completar
+        console.log('Dades carregades correctamen'); // Este es opcional, solo se ejecuta al completar
       }
     });
   }

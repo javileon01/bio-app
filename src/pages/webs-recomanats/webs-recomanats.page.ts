@@ -29,17 +29,22 @@ export class WebsRecomanatsPage implements OnInit {
         this.lista = data;
       },
       error: (error) => {
-        this.errorMessage = 'Error al cargar los datos. Inténtalo de nuevo.';
+        this.errorMessage = 'Error en carregar les dades. Intenta&ndash;ho de nou.'; // Mensaje de error
         console.error(error);
       },
+      complete: () => {
+        console.log('Dades carregades correctamen'); // Este es opcional, solo se ejecuta al completar
+      }
     });
   }
 
   openLink(datos: any) {
+    // Asigna la URL al iframe de manera segura
     this.selectedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(datos.enllac);
   }
 
   closeIframe() {
+     // Cierra el iframe y muestra la lista de webs
     this.selectedUrl = null;
   }
 
