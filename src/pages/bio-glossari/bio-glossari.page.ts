@@ -76,6 +76,6 @@ export class BioGlossariPage implements OnInit {
   }
 
   navegarAGlossariDef(item: any) {
-    this.navCtrl.navigateForward(['/glossari-def', { term: item.paraula }]);
+    this.navCtrl.navigateForward(['/glossari-def', { id: item.id }]);
   }
 }
