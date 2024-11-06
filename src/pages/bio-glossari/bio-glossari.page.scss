@@ -4,35 +4,48 @@ ion-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
   
-  /* Contenedor de las imágenes principales */
-  .logo-container {
+/* Contenedor de las imágenes principales */
+.logo-container {
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 20px 0;
-  }
-  
-  /* Estilo del contenedor de la barra de búsqueda */
-  .search-container {
+}
+
+/* Estilo para la imagen de BioGlossariApp */
+.logo-bioglossariapp {
+    margin-top: 15px;
+    max-width: 75%; /* Ajusta este valor según lo desees */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilo para la imagen de Universitat de Valencia */
+.logo-uv {
+    max-width: 75%; /* Ajusta este valor según lo desees */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilo del contenedor de la barra de búsqueda */
+.search-container {
     width: 100%;
-    max-width: 500px; /* Limita el ancho máximo de la barra */
+    max-width: 500px; /* Limita el ancho máximo de la barra */ 
     padding: 0 20px; /* Agrega espacio a los lados para centrarla */
     margin-top: 10px;
-  }
-  
-  /* Estilos para el ion-searchbar */
-  .search-bar {
+}
+
+/* Estilos para el ion-searchbar */
+.search-bar {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    --background: #f2f2f2;
+    --background: #e5ffec;
     --color: #333;
-  }
-  
-  /* Estilo para el botón de búsqueda */
-  .search-button {
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
     width: 100%;
     border-radius: 8px;
     --background: #3880ff;
@@ -40,9 +53,9 @@ ion-content {
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
-  }
+}
 
- /* Contenedor del texto introductorio */
+/* Contenedor del texto introductorio */
 .intro-text-container {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -52,7 +65,7 @@ ion-content {
     font-size: 1.1rem; /* Aumenta ligeramente el tamaño de la fuente para mayor legibilidad */
     color: #333; /* Color oscuro para contraste */
     margin: 15px 20px; /* Espacio alrededor del contenedor */
-  }
+}
 
 /* Estilo para el ion-list */
 ion-list {
@@ -62,10 +75,10 @@ ion-list {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 0;
     margin-top: 15px;
-  }
-  
-  /* Estilo para los elementos de la lista */
-  ion-item {
+}
+
+/* Estilo para los elementos de la lista */
+ion-item {
     width: 100%;
     font-size: 1rem;
     color: #333;
@@ -74,12 +87,12 @@ ion-list {
     border: none; /* Elimina la línea divisoria */
     cursor: pointer; /* Cambia el cursor a una "manita" */
     transition: background 0.3s ease;
-  }
-  
-  /* Efecto hover para que resalte cuando el usuario pase el cursor */
-  ion-item:hover {
+}
+
+/* Efecto hover para que resalte cuando el usuario pase el cursor */
+ion-item:hover {
     background-color: #e8f0fe; /* Color de fondo suave al hacer hover */
-  }
+}
   
   
   

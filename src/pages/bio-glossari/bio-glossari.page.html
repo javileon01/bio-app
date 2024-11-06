@@ -19,7 +19,12 @@
   </div>
 
   <!-- Barra de búsqueda y botón de búsqueda -->
-  <ion-searchbar [(ngModel)]="terminoBusqueda" placeholder="Introduir terme biol&ograve;gic" class="search-bar"></ion-searchbar>
+  <ion-searchbar 
+  [(ngModel)]="terminoBusqueda" 
+  placeholder="Introduir terme biol&ograve;gic..." 
+  class="search-bar"
+  (keydown.enter)="buscarTerminos()">
+  </ion-searchbar>
   <ion-button expand="full" (click)="buscarTerminos()" class="search-button">Buscar</ion-button>
 
   <!-- Mensaje de error si ocurre algún problema al cargar datos -->
