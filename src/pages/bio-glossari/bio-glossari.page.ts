@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GlossariService } from '../../services/service-glossari/glossari.service';
+import { ContenidoService } from '../../services/service-contenido/contenido.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-bio-glossari',

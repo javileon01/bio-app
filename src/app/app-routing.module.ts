@@ -22,7 +22,10 @@ const routes: Routes = [
     path: 'webs-recomanats',
     loadChildren: () => import('../pages/webs-recomanats/webs-recomanats.module').then( m => m.WebsRecomanatsPageModule)
   },
-
+  {
+    path: 'glossari-def',
+    loadChildren: () => import('../pages/glossari-def/glossari-def.module').then( m => m.GlossariDefPageModule)
+  },
 ];
 
 @NgModule({
