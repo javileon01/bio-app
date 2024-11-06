@@ -12,18 +12,19 @@
   <!-- Contenedor para el texto introductorio desde listaTexto -->
   <div class="intro-text-container">
     <ng-container *ngFor="let texto of listaTexto">
-      <span *ngIf="texto.localizacion == 'app_bioglossari_inici'" class="intro-text">
+      <span *ngIf="texto.localizacion == 'app_bioglossari_inici'">
         {{ texto.texto }}
       </span>
     </ng-container>
   </div>
 
   <!-- Barra de búsqueda y botón de búsqueda -->
-  <ion-searchbar 
+  <ion-searchbar
   [(ngModel)]="terminoBusqueda" 
   placeholder="Introduir terme biol&ograve;gic..." 
   class="search-bar"
-  (keydown.enter)="buscarTerminos()">
+  (keydown.enter)="buscarTerminos()"
+  (ionClear)="limpiarBusqueda()">
   </ion-searchbar>
   <ion-button expand="full" (click)="buscarTerminos()" class="search-button">Buscar</ion-button>
 

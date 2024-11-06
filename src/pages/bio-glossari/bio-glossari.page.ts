@@ -68,6 +68,12 @@ export class BioGlossariPage implements OnInit {
     }
   }
 
+   // Método que se llama cuando el valor del searchbar cambia
+   limpiarBusqueda() {
+    this.terminoBusqueda = ''; // Limpia el campo de búsqueda
+    this.terminosFiltrados = []; // Limpia la lista de términos filtrados
+  }
+
   normalizarTexto(texto: string): string {
     return texto
       .toLowerCase()
