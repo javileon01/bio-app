@@ -30,7 +30,7 @@ export class ContactePage implements OnInit {
         console.error(error); // Muestra el error en la consola
       },
       complete: () => {
-        console.log('Dades carregades correctamen'); // Este es opcional, solo se ejecuta al completar
+        console.log('Dades carregades correctament'); // Este es opcional, solo se ejecuta al completar
       }
     });
   }

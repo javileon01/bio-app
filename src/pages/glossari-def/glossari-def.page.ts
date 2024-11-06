@@ -10,9 +10,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class GlossariDefPage implements OnInit {
 
-  constructor(
+  constructor(private navController: NavController,
   ) {}
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this.navController.back();
   }
 }

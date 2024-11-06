@@ -33,7 +33,7 @@ export class WebsRecomanatsPage implements OnInit {
         console.error(error);
       },
       complete: () => {
-        console.log('Dades carregades correctamen'); // Este es opcional, solo se ejecuta al completar
+        console.log('Dades carregades correctament'); // Este es opcional, solo se ejecuta al completar
       }
     });
   }

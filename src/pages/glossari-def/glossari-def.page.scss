@@ -1,13 +1,12 @@
 /* Ajustes para ion-toolbar */
 ion-header {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+  
 ion-toolbar {
-    --background: #fbfbfb; /* Cambia este color al que desees */
-
+    --background: #f8f9fa;
 }
-
+  
 ion-title {
     color:#000;
     font-size: 23px;
@@ -25,70 +24,11 @@ ion-title {
     padding-bottom: 2px;
 }
 
-ion-header ion-button {
-  background-color: #fbfbfb; /* Color de fondo para los botones */
-  color: #1d1d1d; /* Color del texto del botón */
-  padding-left: 11px;
-  padding-bottom: 3px;
-  --background-hover-opacity: 0;
-  font-size: 20px;
-}
-
-/* Estilos para mostrar la imagen, gen, y autoria en la página de término */
-.term-container h1 {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.term-container h1 span {
-    font-size: 0.8em;
-    color: #555;
-}
-
-.term-container img {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 10px;
-    display: block;
-}
-
-.term-container p {
-    font-size: 1em;
-    color: #333;
-    margin-top: 8px;
-}
-
-.term-container .autoriaf {
-    font-style: italic;
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 5px;
-}
-
-/* Estilos para el iframe */
-.iframe-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.iframe-header {
-    background-color: #fca311; /* Fondo amarillo */
-    padding: 6px;
-    text-align: left; /* Alinea el botón hacia la izquierda */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-}
-
-.iframe-header ion-button {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000; /* Texto en negro */
+  
+  /* Botón de regreso */
+  ion-button {
+    --background: transparent;
     --background-hover-opacity: 0;
-}
-
-.iframe-content {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
+    --color: #333;
+    font-size: 20px;
+  }

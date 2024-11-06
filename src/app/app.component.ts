@@ -15,7 +15,9 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Ocultar el header en la página de 'informacio' o cualquier otra página
-        this.showHeader = !['/informacio', '/contacte', '/webs-recomanats', '/manual-usuari'].includes(event.url);
+        const currentUrl = event.url.split(';')[0]; // Cambiado a ';' para manejar el formato de la URL
+        console.log('Navegando a:', event.url); // Verifica la URL
+        this.showHeader = !['/informacio', '/contacte', '/webs-recomanats', '/manual-usuari','/glossari-def'].includes(currentUrl);
       }
     });
   }
