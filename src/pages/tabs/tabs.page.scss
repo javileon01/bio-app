@@ -1,26 +1,24 @@
+/* Ajuste para el ion-tab-bar para que quede debajo de la imagen */
 ion-tab-bar {
-  position:sticky;
-  top: 56px; /* Ajusta esto según la altura del header */
-  left: 0;
-  right: 0;
-  padding-top: 30px;
-  border-bottom: 2px solid #fbfbfb;
-  margin-bottom: 40px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 40px; /* Ajusta este valor según la altura de la imagen */
   background-color: #fbfbfb;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 15px;
+  padding-bottom: 10px;
   justify-content: space-around;
 }
 
+/* Estilo de los botones en el tab bar */
 ion-tab-button {
   flex: 1;
-  text-align: center;
   background-color: #fbfbfb;
-  transition: transform 0.2s ease; /* Transición suave */
-  box-shadow: none;
-  --ripple-color: transparent; /* Desactiva el efecto ripple */
+  transition: transform 0.2s ease;
+  --ripple-color: transparent;
+  --color-selected: #3880ff;
+  --color: #8e8e93;
 }
 
-/* Intento alternativo con una clase 'selected' o 'tab-selected' */
+/* Agranda ligeramente el botón seleccionado */
 ion-tab-button.tab-selected {
-  transform: scale(1.2); /* Agranda el botón cuando está seleccionado */
+  transform: scale(1.2);
 }

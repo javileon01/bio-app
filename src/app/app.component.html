@@ -1,22 +1,23 @@
 <ion-app>
+  <!-- Menú lateral disponible globalmente -->
   <ion-menu side="start" menu-id="main-menu" content-id="main-content">
     <ion-header>
       <ion-toolbar>
         <ion-title>Menú</ion-title>
       </ion-toolbar>
     </ion-header>
-  
+
     <ion-content>
       <ion-list>
         <ion-menu-toggle>
           <ion-item routerLink="/informacio">
-            <ion-label>Informaci&oacute;</ion-label>
+            <ion-label>Informació</ion-label>
           </ion-item>
           <ion-item routerLink="/contacte">
             <ion-label>Contacte</ion-label>
           </ion-item>
           <ion-item routerLink="/manual-usuari">
-            <ion-label>Manual d&#39;usuari</ion-label>
+            <ion-label>Manual d'usuari</ion-label>
           </ion-item>
           <ion-item routerLink="/webs-recomanats">
             <ion-label>Webs recomanats</ion-label>
@@ -25,18 +26,19 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-  
-  <!-- Header global: se muestra solo si showHeader es true, gracias a *ngIf -->
+
+  <!-- Encabezado principal con el logo, controlado por showHeader -->
   <ion-header *ngIf="showHeader">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú -->
       </ion-buttons>
       <ion-title class="ion-text-center">
-        <img height="42" width="120" src="assets/imgs/bioaps.png">
+        <img src="assets/imgs/bioaps.png" alt="Bioaps Logo" class="logo-image">
       </ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <!-- Contenido principal de la aplicación -->
   <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

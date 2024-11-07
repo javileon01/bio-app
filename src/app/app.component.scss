@@ -1,20 +1,20 @@
-/* Ajustes para ion-header */
+/* Estilo para el logo en el encabezado */
+.logo-image {
+  height: 50px;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: block;
+}
+
+/* Ajustes para el ion-header */
 ion-header {
   box-shadow: none;
+  --background: #fbfbfb;
 }
 
-/* Ajustes para ion-toolbar */
+/* Ajustes para el ion-toolbar */
 ion-toolbar {
-  --background: #fbfbfb; /* Cambia este color al que desees */
-}
-
-ion-title{
-  padding-top: 20px;
-  font-weight: bold;
-}
-
-/* Ajustes para ion-buttons */
-ion-buttons {
-  background-color: #fbfbfb; /* Color de fondo para los botones */
-  color: #000; /* Color del texto del botón */
+  --background: #fbfbfb;
+  padding-bottom: 4px;
 }
