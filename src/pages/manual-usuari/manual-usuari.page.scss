@@ -58,7 +58,8 @@ ion-button {
   
   /* Estilo para las imágenes más grandes */
   .manual-img {
-    max-width: 550px; /* Aumenta el tamaño máximo de las imágenes */
+    width: 100%; /* Ancho de la imagen al 100% */
+    max-width: 500px; /* Aumenta el tamaño máximo de las imágenes */
     height: auto;
     margin-bottom: 16px; /* Espacio debajo de la imagen */
   }

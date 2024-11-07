@@ -25,95 +25,95 @@ ion-title {
 }
 
   
-  /* Botón de regreso */
-  ion-button {
-    --background: transparent;
-    --background-hover-opacity: 0;
-    --color: #333;
-    font-size: 20px;
-  }
-  
-  /* Contenedor principal */
-  .content-wrapper {
-    padding: 20px;
-    background-color: #f4f4f9;
-  }
-  
-  /* Estilo de la imagen/logo */
-  .logo {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 50px;
-    border-radius: 8px;
-    box-shadow: none;
-    border: none;
-  }
+/* Botón de regreso */
+ion-button {
+  --background: transparent;
+  --background-hover-opacity: 0;
+  --color: #333;
+  font-size: 20px;
+}
 
-  /* Sección de información principal */
+/* Contenedor principal */
+.content-wrapper {
+  padding: 15px;
+  background-color: #f4f4f9;
+}
+
+/* Sección de información principal */
 .info-section {
-    text-align: justify; /* Justifica el texto para una alineación uniforme */
-    padding-left: 10px;
-    padding-right: 20px;
-    line-height: 1.8; /* Ajusta el espacio entre líneas */
-  }
-  
-  /* Estilo del párrafo dentro de .info-section */
-  .info-section p {
-    font-size: 1.3em; /* Tamaño de fuente para mejorar la legibilidad */
-    margin-bottom: 15px; /* Espacio entre párrafos */
-    color: #555; /* Color gris para suavizar el texto */
-  }
-  
-  /* Texto de información */
-  p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: #555;
-  }
-  
-  /* Estilos para la sección de versiones */
-  .versions {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .versions h3 {
-    font-size: 1.3em;
-    color: #0073e6;
-    margin-bottom: 15px;
-  }
-  
-  .version-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .version-item ion-icon {
-    font-size: 1.2em;
-    color: #0073e6;
-    margin-right: 10px;
-  }
-  
-  .version-item p {
-    margin: 0;
-    color: #333;
-  }
-  
-  /* Mensaje de error */
-  .error-message {
-    color: #d9534f;
-    font-weight: bold;
-    background-color: #f8d7da;
-    padding: 8px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
+  text-align: justify; /* Justifica el texto para una alineación uniforme */
+  padding-left: 10px;
+  padding-right: 20px;
+  line-height: 1.8; /* Ajusta el espacio entre líneas */
+}
+
+/* Estilo del párrafo dentro de .info-section */
+.info-section p {
+  font-size: 1.3em; /* Tamaño de fuente para mejorar la legibilidad */
+  margin-bottom: 15px; /* Espacio entre párrafos */
+  color: #555; /* Color gris para suavizar el texto */
+}
+
+/* Texto de información */
+p {
+  font-size: 1.1em; /* Tamaño de fuente */
+  line-height: 1.4; /* Reduce el espaciado entre líneas para que el texto parezca más compacto */
+  margin: 0 0 10px; /* Espacio inferior reducido entre párrafos */
+  color: #555; /* Color del texto */
+}
+
+/* Estilo de la imagen/logo */
+.logo {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  border-radius: 8px;
+  box-shadow: none;
+  border: none;
+}
+
+/* Estilos para la sección de versiones */
+.versions {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.versions h3 {
+  font-size: 1.3em;
+  color: #0073e6;
+  margin-bottom: 15px;
+}
+
+.version-item {
+  display: flex;
+  align-items: flex-start; /* Mantiene la alineación en la parte superior */
+  margin-bottom: 14px;
+}
+
+.version-item ion-icon {
+  font-size: 1.6em; /* Aumenta el tamaño del icono */
+  color: #0073e6; /* Color del icono */
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+  flex-shrink: 0; /* Evita que el icono se reduzca */
+}
+
+.version-item p {
+  margin: 0;
+  color: #333;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #d9534f;
+  font-weight: bold;
+  background-color: #f8d7da;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
