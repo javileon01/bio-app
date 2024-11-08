@@ -36,7 +36,7 @@ export class GlossariDefPage implements OnInit {
 
   // Método para cargar los datos de la palabra
   cargarDatosPalabra(id: string) {
-
+    // Obtener los datos de la palabra por su ID
     this.glossariService.obtenerTerminoPorId(id).subscribe(data => {
       this.palabraData = data;
 
@@ -59,7 +59,7 @@ export class GlossariDefPage implements OnInit {
         // Si no hay `txten`, asegurarse de que no se muestre ni el botón ni el mensaje de ayuda
         this.textoRelacionado = '';
         this.esTerminoRelacionadoDisponible = false;
-        this.esConsultaRelacionadaCompleta = true;
+        this.esConsultaRelacionadaCompleta = false;
         }
     });
   }
