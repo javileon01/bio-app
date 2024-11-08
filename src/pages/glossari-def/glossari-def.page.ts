@@ -17,6 +17,7 @@ export class GlossariDefPage implements OnInit {
   terminoRelacionado: string = ''; // Término relacionado sin "Vegeu " ni punto final
   iframeUrl: SafeResourceUrl | null = null; // URL segura para el iframe
   esTerminoRelacionadoDisponible: boolean = false; // Estado de disponibilidad del término relacionado
+  esConsultaRelacionadaCompleta: boolean = false; // Estado de consulta relacionada completa
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class GlossariDefPage implements OnInit {
 
   // Método para cargar los datos de la palabra
   cargarDatosPalabra(id: string) {
+
     this.glossariService.obtenerTerminoPorId(id).subscribe(data => {
       this.palabraData = data;
 
@@ -44,18 +46,20 @@ export class GlossariDefPage implements OnInit {
 
       if (this.palabraData?.txten) {
         // Extraer el término relacionado quitando "Vegeu " y el punto final
-        const termino = this.palabraData.txten.replace('Vegeu ', '').replace(/\.$/, '');
-        this.terminoCapitalizado = this.capitalizarPrimeraLetra(termino);
+        this.terminoRelacionado = this.palabraData.txten.replace('Vegeu ', '').replace(/\.$/, '');
+        this.terminoCapitalizado = this.capitalizarPrimeraLetra(this.terminoRelacionado);
         this.textoRelacionado = `Vegeu: "${this.terminoCapitalizado}"`;
 
         // Verifica si el término relacionado existe
-        this.glossariService.obtenerTerminoPorNombre(termino).subscribe((resultado) => {
+        this.glossariService.obtenerTerminoPorNombre(this.terminoRelacionado).subscribe((resultado) => {
           this.esTerminoRelacionadoDisponible = !!resultado; // Actualiza si el término fue encontrado
+          this.esConsultaRelacionadaCompleta = true; // Marca la consulta como completa
         });
       } else {
         // Si no hay `txten`, asegurarse de que no se muestre ni el botón ni el mensaje de ayuda
-        this.esTerminoRelacionadoDisponible = false;
         this.textoRelacionado = '';
+        this.esTerminoRelacionadoDisponible = false;
+        this.esConsultaRelacionadaCompleta = true;
         }
     });
   }
