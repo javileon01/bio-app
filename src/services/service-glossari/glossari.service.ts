@@ -19,7 +19,14 @@ export class GlossariService {
   // Método para obtener un término por su ID
   obtenerTerminoPorId(id: string): Observable<any | undefined> {
     return this.obtenerTerminos().pipe(
-      map(terminos => terminos.find(item => item.id === id))
+      map(terminos => terminos.find(item => item.id === Number(id))) // Convertir a número para comparar
+    );
+  }
+
+   // Método para obtener un término por su nombre (paraula)
+   obtenerTerminoPorNombre(nombre: string): Observable<any | undefined> {
+    return this.obtenerTerminos().pipe(
+      map(terminos => terminos.find(item => item.paraula === nombre))
     );
   }
 }

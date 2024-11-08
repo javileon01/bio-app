@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GlossariService } from '../../services/service-glossari/glossari.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-glossari-def',
@@ -9,23 +10,94 @@ import { GlossariService } from '../../services/service-glossari/glossari.servic
   styleUrls: ['./glossari-def.page.scss'],
 })
 export class GlossariDefPage implements OnInit {
-  datosPalabra: any;
+  palabraData: any; // Datos completos de la palabra actual
+  palabraTitulo: string = ''; // Título de la palabra con capitalización
+  textoRelacionado: string = ''; // Texto formateado de término relacionado
+  terminoRelacionado: string = ''; // Término relacionado sin "Vegeu " ni punto final
+  iframeUrl: SafeResourceUrl | null = null; // URL segura para el iframe
+  esTerminoRelacionadoDisponible: boolean = false; // Estado de disponibilidad del término relacionado
 
   constructor(
     private route: ActivatedRoute,
     private glossariService: GlossariService,
-    private navCtrl: NavController
+    private sanitizer: DomSanitizer,
+    private navCtrl: NavController,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    // Obtiene el ID del término desde la URL
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      // Llama al servicio para obtener el término por ID
-      this.glossariService.obtenerTerminoPorId(id).subscribe(data => {
-        this.datosPalabra = data;
+      this.cargarDatosPalabra(id);
+    }
+  }
+
+  // Método para cargar los datos de la palabra
+  cargarDatosPalabra(id: string) {
+    this.glossariService.obtenerTerminoPorId(id).subscribe(data => {
+      this.palabraData = data;
+
+      if (this.palabraData?.paraula) {
+        this.palabraTitulo = this.capitalizarPrimeraLetra(this.palabraData.paraula);
+      }
+
+      if (this.palabraData?.txten) {
+        // Extraer el término relacionado quitando "Vegeu " y el punto final
+        const termino = this.palabraData.txten.replace('Vegeu ', '').replace(/\.$/, '');
+        this.textoRelacionado = `Vegeu: "${this.capitalizarPrimeraLetra(termino)}"`;
+        this.terminoRelacionado = termino;
+
+        // Verifica si el término relacionado existe
+        this.glossariService.obtenerTerminoPorNombre(termino).subscribe((resultado) => {
+          this.esTerminoRelacionadoDisponible = !!resultado; // Actualiza si el término fue encontrado
+        });
+      } else {
+        // Si no hay `txten`, no mostrar el botón y mostrar solo el texto
+        this.esTerminoRelacionadoDisponible = false;
+      }
+    });
+  }
+
+  // Método para capitalizar la primera letra
+  capitalizarPrimeraLetra(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  // Método para abrir Viquipèdia en el iframe
+  abrirIframeViquipedia() {
+    if (this.palabraData.viqui) {
+      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.palabraData.viqui);
+    }
+  }
+
+  // Métodos para abrir enlaces en una nueva pestaña
+  abrirEnlaceEnciclopedia() {
+    if (this.palabraData.encic) {
+      window.open(this.palabraData.encic, '_blank');
+    }
+  }
+
+  abrirEnlaceDNV() {
+    if (this.palabraData?.paraula) {
+      const dnvUrl = `http://www.avl.gva.es/lexicval/dnv?paraula=${this.palabraData.paraula}`;
+      window.open(dnvUrl, '_blank');
+    }
+  }
+
+  // Método para redirigir a la palabra relacionada en `txten`
+  redirigirATerminoRelacionado() {
+    if (this.esTerminoRelacionadoDisponible) {
+      this.glossariService.obtenerTerminoPorNombre(this.terminoRelacionado).subscribe((resultado) => {
+        if (resultado) {
+          this.router.navigate(['/glossari-def', { id: resultado.id }]);
+        }
       });
     }
+  }
+
+  // Método para cerrar el iframe
+  cerrarIframe() {
+    this.iframeUrl = null;
   }
 
   // Método para regresar a la página anterior
