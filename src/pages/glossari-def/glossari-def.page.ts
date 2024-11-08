@@ -13,6 +13,7 @@ export class GlossariDefPage implements OnInit {
   palabraData: any; // Datos completos de la palabra actual
   palabraTitulo: string = ''; // Título de la palabra con capitalización
   textoRelacionado: string = ''; // Texto formateado de término relacionado
+  terminoCapitalizado: string = ''; // Término relacionado con capitalización
   terminoRelacionado: string = ''; // Término relacionado sin "Vegeu " ni punto final
   iframeUrl: SafeResourceUrl | null = null; // URL segura para el iframe
   esTerminoRelacionadoDisponible: boolean = false; // Estado de disponibilidad del término relacionado
@@ -44,17 +45,18 @@ export class GlossariDefPage implements OnInit {
       if (this.palabraData?.txten) {
         // Extraer el término relacionado quitando "Vegeu " y el punto final
         const termino = this.palabraData.txten.replace('Vegeu ', '').replace(/\.$/, '');
-        this.textoRelacionado = `Vegeu: "${this.capitalizarPrimeraLetra(termino)}"`;
-        this.terminoRelacionado = termino;
+        this.terminoCapitalizado = this.capitalizarPrimeraLetra(termino);
+        this.textoRelacionado = `Vegeu: "${this.terminoCapitalizado}"`;
 
         // Verifica si el término relacionado existe
         this.glossariService.obtenerTerminoPorNombre(termino).subscribe((resultado) => {
           this.esTerminoRelacionadoDisponible = !!resultado; // Actualiza si el término fue encontrado
         });
       } else {
-        // Si no hay `txten`, no mostrar el botón y mostrar solo el texto
+        // Si no hay `txten`, asegurarse de que no se muestre ni el botón ni el mensaje de ayuda
         this.esTerminoRelacionadoDisponible = false;
-      }
+        this.textoRelacionado = '';
+        }
     });
   }
 

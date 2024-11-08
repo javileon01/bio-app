@@ -36,7 +36,7 @@
   <!-- Lista de resultados de términos filtrados, solo visible si hay términos filtrados -->
   <ion-list *ngIf="terminosFiltrados.length > 0">
     <ion-item *ngFor="let item of terminosFiltrados" (click)="navegarAGlossariDef(item)">
-      {{ item.paraula }}
+      {{ capitalizarPrimeraLetra(item.paraula) }}
     </ion-item>
   </ion-list>
 </ion-content>

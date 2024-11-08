@@ -43,12 +43,12 @@
     <!-- Mostrar botón si el término relacionado está disponible -->
     <button class="custom-button" *ngIf="esTerminoRelacionadoDisponible" (click)="redirigirATerminoRelacionado()">
       <ion-icon name="link-outline" slot="start"></ion-icon>
-      Veure {{ terminoRelacionado }}
+      Veure {{ terminoCapitalizado }}
     </button>
 
     <!-- Mostrar mensaje de ayuda si no hay término relacionado -->
     <p *ngIf="!esTerminoRelacionadoDisponible" class="mensaje-ayuda">
-      Busque "{{ terminoRelacionado }}" o un terme semblant en el cercador manualment.
+      Busque "{{ terminoCapitalizado }}" o un terme semblant en el cercador manualment.
     </p>
   </div>
 </ion-content>
