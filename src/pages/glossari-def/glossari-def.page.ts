@@ -18,6 +18,7 @@ export class GlossariDefPage implements OnInit {
   iframeUrl: SafeResourceUrl | null = null; // URL segura para el iframe
   esTerminoRelacionadoDisponible: boolean = false; // Estado de disponibilidad del término relacionado
   esConsultaRelacionadaCompleta: boolean = false; // Estado de consulta relacionada completa
+  esTerminoRelacionadoValido: boolean = false; // Estado de validez del término relacionado
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +46,13 @@ export class GlossariDefPage implements OnInit {
       }
 
       if (this.palabraData?.txten) {
-        // Extraer el término relacionado quitando "Vegeu " y el punto final
-        this.terminoRelacionado = this.palabraData.txten.replace('Vegeu ', '').replace(/\.$/, '');
+        // Extraer el término relacionado quitando "vegeu " y el punto final
+        this.terminoRelacionado = this.palabraData.txten.replace(/vegeu /i, '').replace(/\.$/, '');
+
+        // Validar si el término relacionado es válido (más de una letra y solo caracteres alfabéticos)
+        this.esTerminoRelacionadoValido = this.terminoRelacionado.length > 1 && 
+        /^[a-zA-Z\sÀ-ÿ]+$/.test(this.terminoRelacionado);
+
         this.terminoCapitalizado = this.capitalizarPrimeraLetra(this.terminoRelacionado);
         this.textoRelacionado = `Vegeu: "${this.terminoCapitalizado}"`;
 
@@ -60,6 +66,7 @@ export class GlossariDefPage implements OnInit {
         this.textoRelacionado = '';
         this.esTerminoRelacionadoDisponible = false;
         this.esConsultaRelacionadaCompleta = false;
+        this.esTerminoRelacionadoValido = false;
         }
     });
   }

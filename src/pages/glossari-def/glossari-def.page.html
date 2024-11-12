@@ -37,11 +37,16 @@
   </div>
 
   <!-- Referencia a término relacionado -->
-  <div *ngIf="palabraData?.txten && esConsultaRelacionadaCompleta" class="redireccion-container">
+  <div 
+  *ngIf="palabraData?.txten && esConsultaRelacionadaCompleta && esTerminoRelacionadoValido" 
+  class="redireccion-container">
     <p>{{ textoRelacionado }}</p>
 
     <!-- Mostrar botón si el término relacionado está disponible -->
-    <button class="custom-button" *ngIf="esTerminoRelacionadoDisponible" (click)="redirigirATerminoRelacionado()">
+    <button 
+    class="custom-button"
+    *ngIf="esTerminoRelacionadoDisponible && esTerminoRelacionadoValido && esConsultaRelacionadaCompleta"
+    (click)="redirigirATerminoRelacionado()">
       <ion-icon name="link-outline" slot="start"></ion-icon>
       Veure {{ terminoCapitalizado }}
     </button>

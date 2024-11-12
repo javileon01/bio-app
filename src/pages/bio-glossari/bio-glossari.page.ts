@@ -66,7 +66,8 @@ export class BioGlossariPage implements OnInit {
 
         // Filtra los términos originales para encontrar coincidencias
         this.terminosFiltrados = this.terminosOriginales.filter(item => 
-            this.normalizarTexto(item.paraula).includes(terminoNormalizado));
+            this.normalizarTexto(item.paraula).includes(terminoNormalizado) && 
+            item.paraula.length > 1); // Excluye palabras de un solo caracter
     } else {
         // Deja la lista vacía si el campo de búsqueda está vacío
         this.terminosFiltrados = [];

@@ -52,7 +52,15 @@ ion-content {
   text-align: center;
   font-size: 1.1em;
   font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacio entre autor y género */
   margin-bottom: 1em; /* Separación con el contenido siguiente */
+  padding: 0 1em; /* Espaciado interno para alejar del borde */
+  max-width: 90%; /* Limitar el ancho del contenedor */
+  margin-left: auto; /* Centra el contenedor horizontalmente */
+  margin-right: auto;
 }
 
 /* Estilo para el autor */
@@ -63,20 +71,23 @@ ion-content {
 /* Estilo para el género, al lado del autor */
 .genero {
   color: #999;
-  margin-left: 0.3em; /* Espacio entre autor y género */
 }
 
 /* Estilos para la definición */
 #definicion {
-  font-size: 1.2em;
-  line-height: 1.6;
+  font-size: 1.1em;
+  line-height: 1.5;
   color: #555;
   margin-top: 1em;
   margin-bottom: 1.5em;
   text-align: justify;
-  padding: 0 2em;
-  word-spacing: -1px;
+  max-width: 600px; /* Ajusta el ancho máximo para pantallas grandes */
+  padding: 0 1.5em; /* Reduce el padding lateral */
+  overflow-wrap: break-word; /* Evita problemas de texto que se sale del contenedor */
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 /* Contenedor de la imagen */
 .image-container {
@@ -161,7 +172,7 @@ ion-content {
 }
 
 .iframe-header {
-  background-color: #fca311; /* Fondo amarillo */
+  background-color: #4789fc; /* Fondo amarillo */
   text-align: left; /* Alinea el botón hacia la izquierda */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
 }
