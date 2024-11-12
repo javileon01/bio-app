@@ -18,7 +18,7 @@
   </div>
 
   <!-- Barra de búsqueda -->
-  <ion-searchbar class="search-bar" placeholder="Buscar v&iacute;deos..." (ionInput)="filterVideos($event)"></ion-searchbar>
+  <ion-searchbar class="search-bar" placeholder="Buscar v&iacute;deos..." (ionInput)="filtrarVideos($event)"></ion-searchbar>
 
   <!-- Lista de videos filtrados, cada uno abre el video en una página externa -->
   <ion-list>
@@ -28,7 +28,7 @@
 
         <!-- Título en su propio ion-item -->
         <ion-item lines="none" class="video-item">
-          <span class="video-title">{{ video.titol | slice:0:-9 }}</span>
+          <span class="video-title">{{ obtenerTituloFormateado(video.titol) }}</span>
         </ion-item>
 
         <!-- Autores en su propio ion-item -->
