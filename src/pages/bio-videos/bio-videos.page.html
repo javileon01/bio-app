@@ -1,5 +1,43 @@
 <ion-content class="ion-padding">
-  <h1>Bienvenido a BioVideos</h1>
-  <p>Aquí podrás ver videos relacionados con la biología...</p>
-  <!-- Resto del contenido de la página -->
+  <!-- Contenedor para las imágenes de BioVideos y Universidad -->
+  <div class="logo-container">
+    <img class="logo-bio-videos" src="assets/imgs/biovideosaps.png" alt="Icono BioVideos">
+  </div>
+  <div class="logo-container">
+    <img class="logo-uv" src="assets/imgs/uvimg.png" alt="Isologo UV">
+  </div>
+
+  <!-- Contenedor para los textos introductorios -->
+  <div class="intro-text-container">
+    <ng-container *ngFor="let texto of textosIntroductorios">
+      <span *ngIf="texto.localizacion === 'app_biovideo_inici'" class="texto-inicio">{{ texto.texto }}</span>
+    </ng-container>
+    <ng-container *ngFor="let texto of textosIntroductorios">
+      <span *ngIf="texto.localizacion === 'app_biovideo_tema'" class="texto-tema">{{ texto.texto }}</span>
+    </ng-container>
+  </div>
+
+  <!-- Barra de búsqueda -->
+  <ion-searchbar class="search-bar" placeholder="Buscar v&iacute;deos..." (ionInput)="filterVideos($event)"></ion-searchbar>
+
+  <!-- Lista de videos filtrados, cada uno abre el video en una página externa -->
+  <ion-list>
+    <ion-card *ngFor="let video of filteredVideos" (click)="openVideo(video)">
+      <ion-card-content>
+        <img [src]="'http://bioaps.uv.es/site/assets/files/' + video.id + '/' + video.image" alt="Imagen del video" />
+
+        <!-- Título en su propio ion-item -->
+        <ion-item lines="none" class="video-item">
+          <span class="video-title">{{ video.titol | slice:0:-9 }}</span>
+        </ion-item>
+
+        <!-- Autores en su propio ion-item -->
+        <ion-item lines="none" class="video-item">
+          <span class="video-authors">{{ video.autors }}</span>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
 </ion-content>

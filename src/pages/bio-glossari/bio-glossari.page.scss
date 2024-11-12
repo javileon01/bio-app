@@ -11,7 +11,6 @@ ion-content {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 10px 0;
 }
 
 /* Estilo para la imagen de BioGlossariApp */
@@ -25,14 +24,6 @@ ion-content {
 .logo-uv {
     max-width: 75%; /* Ajusta este valor según lo desees */
     height: auto; /* Mantiene la proporción de la imagen */
-}
-
-/* Estilo del contenedor de la barra de búsqueda */
-.search-container {
-    width: 100%;
-    max-width: 500px; /* Limita el ancho máximo de la barra */ 
-    padding: 0 20px; /* Agrega espacio a los lados para centrarla */
-    margin-top: 10px;
 }
 
 /* Estilos para el ion-searchbar */

@@ -1,0 +1,115 @@
+/* Estilos generales */
+ion-content {
+    --background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+/* Contenedor de las imágenes principales */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilo para la imagen de BioGlossariApp */
+.logo-bio-videos {
+    margin-top: 15px;
+    max-width: 75%; /* Ajusta este valor según lo desees */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilo para la imagen de Universitat de Valencia */
+.logo-uv {
+    max-width: 75%; /* Ajusta este valor según lo desees */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Contenedor del texto introductorio */
+.intro-text-container {
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.texto-inicio {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.texto-tema {
+    margin: 15px 2px;
+}
+
+/* Estilos para el ion-searchbar */
+.search-bar {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --background: #e8eafc;
+    --color: #333;
+    margin-bottom: 3px;
+}
+
+/* Efecto de hover y cursor pointer en cada card */
+ion-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+ion-card:hover {
+    transform: translateY(-5px); /* Levanta la card ligeramente */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Contenido de cada card */
+ion-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+
+ion-card-content img {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho del card */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Opcional: redondea los bordes de la imagen */
+    margin-bottom: 8px;
+}
+
+/* Estilos para los elementos de título y autores dentro de cada card */
+.video-item {
+    --background: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
+    transition: color 0.2s ease-in-out;
+}
+
+.video-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #292836;
+    margin: 0;
+}
+
+.video-authors {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Efecto hover en el título dentro del card */
+.video-item:hover .video-title {
+    color: #1a73e8; /* Cambia el color del título al pasar el ratón */
+}
+
+
+  
