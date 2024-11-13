@@ -35,15 +35,22 @@ ion-content {
     --color: #333;
 }
 
-/* Estilo para el botón de búsqueda */
-.search-button {
-    width: 100%;
-    border-radius: 8px;
-    --background: #3880ff;
-    color: white;
+/* Estilo para el botón de buscar */
+ion-button {
+    width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+    margin-top: 12px;
+    --background: #3880ff; /* Fondo predeterminado azul */
+    --color: white; /* Texto blanco */
+    --ripple-color: #1a73e8; /* Efecto ripple en color azul más claro */
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+    font-size: 1.1rem;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    --background-hover: #3b7fd3; /* Fondo azul claro al hacer hover */
+    --background-activated: #1f5bb8; /* Fondo azul más oscuro al hacer clic */
 }
 
 /* Contenedor del texto introductorio */

@@ -1,0 +1,109 @@
+/* Estilos generales */
+ion-content {
+    --background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor de las imágenes principales */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilo para la imagen de BioQuestionariApp */
+.logo-bioquestionariapp {
+    margin-top: 15px;
+    max-width: 75%;
+    height: auto;
+}
+
+/* Estilo para la imagen de Universitat de Valencia */
+.logo-uv {
+    max-width: 75%;
+    height: auto;
+}
+
+/* Contenedor del texto introductorio */
+.intro-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Cambia el alineado a justificado */
+    font-weight: bold;
+    font-size: 1rem; /* Reduce ligeramente el tamaño para un aspecto más compacto */
+    color: #333;
+    margin: 15px 20px; /* Ajusta los márgenes alrededor del texto */
+    padding: 0 20px;
+}
+/* Estilos para los selectores */
+.select-item-tema {
+    width: 100%;
+    margin-top: 28px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --background: #f9f9f9;
+    --color: #333;
+    --placeholder-color: #888; /* Color del placeholder */
+    margin-bottom: 15px; /* Espacio entre elementos */
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.select-item-tema:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Efecto de elevación al hover */
+}
+
+.select-item-video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --background: #f9f9f9;
+    --color: #333;
+    --placeholder-color: #888; /* Color del placeholder */
+    margin-bottom: 15px; /* Espacio entre elementos */
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.select-item-video:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Efecto de elevación al hover */
+}
+
+/* Estilos internos de ion-label e ion-select */
+ion-label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Estilos internos de ion-select */
+ion-select {
+    --padding-start: 8px; /* Espacio interno a la izquierda del texto */
+    --padding-end: 8px;
+    
+}
+
+/* Estilo para el botón de inicio del cuestionario */
+ion-button {
+    width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+    margin-top: 12px;
+    --background: #3880ff; /* Fondo predeterminado azul */
+    --color: white; /* Texto blanco */
+    --ripple-color: #1a73e8; /* Efecto ripple en color azul más claro */
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    --background-hover: #3b7fd3; /* Fondo azul claro al hacer hover */
+    --background-activated: #1f5bb8; /* Fondo azul más oscuro al hacer clic */
+}
+
+
+
+
+

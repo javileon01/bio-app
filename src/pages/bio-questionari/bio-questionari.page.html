@@ -1,18 +1,48 @@
 <ion-content class="ion-padding">
-  <h1>Bienvenido a BioQüestionari</h1>
-  <p>Aquí podrás realizar cuestionarios de biología para evaluar tus conocimientos...</p>
-  
-  <!-- Ejemplo de una lista de preguntas o cuestionarios -->
-  <ion-list>
-    <ion-item>
-      <ion-label>Cuestionario 1: Genética</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Cuestionario 2: Ecología</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Cuestionario 3: Evolución</ion-label>
-    </ion-item>
-    <!-- Agrega más elementos según sea necesario -->
-  </ion-list>
+  <!-- Contenedor de imagen de BioQuestionariApp con padding superior -->
+  <div class="logo-container">
+    <img ngOptimizedImage src="assets/imgs/bioquestionariaps.png" alt="Logo BioQuestionariApp" class="logo-bioquestionariapp">
+  </div>
+
+  <!-- Contenedor de imagen de Universitat de Valencia con padding superior -->
+  <div class="logo-container">
+    <img ngOptimizedImage src="assets/imgs/uvimg.png" alt="Logo UV" class="logo-uv">
+  </div>
+
+  <!-- Contenedor para el texto introductorio desde listaTexto -->
+  <div class="intro-text-container">
+    <ng-container *ngFor="let texto of textosIntroductorios">
+      <span *ngIf="texto.localizacion === 'app_bioquestionari_inici'" class="texto-inicio">
+        {{ texto.texto }}
+      </span>
+    </ng-container>
+  </div>
+
+  <!-- Selectores de tema y video -->
+  <ion-item class="select-item-tema">
+    <ion-label>Tema</ion-label>
+    <ion-select 
+      [(ngModel)]="temaSeleccionado" 
+      [disabled]="videoSeleccionado !== null"
+      (ionCancel)="temaSeleccionado = null" 
+      (ionChange)="verificarSeleccion('tema')"
+      placeholder="Tria un tema">
+      <ion-select-option *ngFor="let tema of temas" [value]="tema.tema">{{ capitalizarPrimeraLetra(tema.tema) }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="select-item-video">
+    <ion-label>V&iacute;deo</ion-label>
+    <ion-select 
+      [(ngModel)]="videoSeleccionado" 
+      [disabled]="temaSeleccionado !== null" 
+      (ionCancel)="videoSeleccionado = null"
+      (ionChange)="verificarSeleccion('video')"
+      placeholder="Tria un v&iacute;deo">
+      <ion-select-option *ngFor="let video of videosQuiz" [value]="video.ID">{{ video.title }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Botón de inicio del cuestionario -->
+  <ion-button expand="full" (click)="iniciarCuestionario()">INICIAR Q&Uuml;ESTIONARI</ion-button>
 </ion-content>
