@@ -64,24 +64,27 @@ export class BioQuestionariPage implements OnInit {
 
   iniciarCuestionario() {
     if (this.temaSeleccionado) {
-      const tema = {
-        title: this.temaSeleccionado,
-        tema: this.temaSeleccionado
+      // Caso en que se selecciona un tema
+      const temaData = {
+        title: this.capitalizarPrimeraLetra(this.temaSeleccionado),
+        nombreTema: this.temaSeleccionado
       };
       this.navCtrl.navigateForward('/questionari', {
-        queryParams: { tema: JSON.stringify(tema) }
+        queryParams: { tema: JSON.stringify(temaData) }
       });
     } else if (this.videoSeleccionado) {
-      const video = this.videosQuiz.find(v => v.ID === this.videoSeleccionado);
-      if (video) {
+      // Caso en que se selecciona un video
+      const videoData = this.videosQuiz.find(v => v.ID === this.videoSeleccionado);
+      if (videoData) {
         this.navCtrl.navigateForward('/questionari', {
-          queryParams: { video: JSON.stringify(video) }
+          queryParams: { video: JSON.stringify(videoData) }
         });
       }
     } else {
       console.log('Seleccione un tema o un video para iniciar el cuestionario');
     }
-  } 
+  }
+
 
   verificarSeleccion(tipo: string) {
     // Verifica si el valor seleccionado es undefined o vacío
