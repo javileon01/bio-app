@@ -1,3 +1,83 @@
-<ion-content padding>
-  <h1 style="text-align: center;">Soy la página donde se encuentran las preguntas</h1>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ cuestionarioData?.title || 'Qüestionari' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Mostrar el temporizador detenido, el título y el botón de inicio -->
+  <div *ngIf="!cuestionarioIniciado">
+    <div class="tiempo">Temps restant: {{ tiempoRestante }}</div>
+
+    <!-- Mostrar el título del cuestionario antes de comenzar -->
+    <h2 *ngIf="cuestionarioData?.title">{{ cuestionarioData.title }}</h2>
+
+    <!-- Mostrar detalles del video en modo card si `cuestionarioData` contiene las propiedades de un video -->
+    <ion-card *ngIf="cuestionarioData?.enllac && cuestionarioData?.image && cuestionarioData?.id" (click)="abrirVideo()">
+      <ion-img [src]="'http://bioaps.uv.es/site/assets/files/' + cuestionarioData.id + '/' + cuestionarioData.image" alt="Imagen del Video"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ cuestionarioData.title }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- Botón para iniciar el cuestionario -->
+    <ion-button expand="block" color="secondary" (click)="iniciarCuestionario()">
+      Iniciar Qüestionari
+    </ion-button>
+  </div>
+
+  <!-- Preguntas del cuestionario solo visibles cuando el cuestionario ha comenzado -->
+  <div *ngIf="cuestionarioIniciado">
+    <div class="tiempo">Temps restant: {{ tiempoRestante }}</div>
+
+    <ion-list *ngIf="preguntas.length > 0">
+      <ion-item *ngFor="let pregunta of preguntas; let i = index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ i + 1 }}. {{ pregunta.pregunta }}</ion-card-title>
+            <ion-card-subtitle>{{ pregunta.punt }} Punts</ion-card-subtitle>
+          </ion-card-header>
+
+          <!-- Mostrar imagen de la pregunta si está disponible -->
+          <ion-card-content *ngIf="pregunta.image">
+            <img [src]="'http://bioaps.uv.es/site/assets/files/' + pregunta.id + '/' + pregunta.image" />
+          </ion-card-content>
+
+          <!-- Respuesta de texto -->
+          <div *ngIf="pregunta.op1 === 'nohay' && pregunta.op2 === 'nohay' && pregunta.op3 === 'nohay' && pregunta.op4 === 'nohay'">
+            <ion-item>
+              <ion-label position="stacked">Resposta:</ion-label>
+              <ion-input [(ngModel)]="respuestas[i]" placeholder="Escriu la resposta aquí"></ion-input>
+            </ion-item>
+          </div>
+
+          <!-- Opciones de selección -->
+          <ion-radio-group *ngIf="!(pregunta.op1 === 'nohay' && pregunta.op2 === 'nohay' && pregunta.op3 === 'nohay' && pregunta.op4 === 'nohay')"
+                           (ionChange)="seleccionarRespuesta(i, $event.detail.value)">
+            <ion-item *ngIf="pregunta.op1 !== 'nohay'">
+              <ion-label>{{ pregunta.op1 }}</ion-label>
+              <ion-radio value="{{ pregunta.op1 }}"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="pregunta.op2 !== 'nohay'">
+              <ion-label>{{ pregunta.op2 }}</ion-label>
+              <ion-radio value="{{ pregunta.op2 }}"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="pregunta.op3 !== 'nohay'">
+              <ion-label>{{ pregunta.op3 }}</ion-label>
+              <ion-radio value="{{ pregunta.op3 }}"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="pregunta.op4 !== 'nohay'">
+              <ion-label>{{ pregunta.op4 }}</ion-label>
+              <ion-radio value="{{ pregunta.op4 }}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botón para finalizar el cuestionario -->
+    <ion-button expand="full" (click)="finalizarCuestionario()">Acabar Qüestionari</ion-button>
+  </div>
+
 </ion-content>

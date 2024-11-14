@@ -30,54 +30,58 @@ export class BioQuestionariPage implements OnInit {
   }
 
   cargarTemas() {
-    this.temasService.obtenerTemasPregunta().subscribe(
-      (data) => {
+    this.temasService.obtenerTemasPregunta().subscribe({
+      next: (data) => {
         this.temas = data;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al cargar los temas:', error);
       }
-    );
+    });
   }
-
+  
   cargarVideosQuiz() {
-    this.videosQuizService.obtenerDatosVideosQuiz().subscribe(
-      (data) => {
+    this.videosQuizService.obtenerDatosVideosQuiz().subscribe({
+      next: (data) => {
         this.videosQuiz = data;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al cargar los videos:', error);
       }
-    );
+    });
   }
-
+  
   cargarTextosIntroductorios() {
-    this.contenidoService.obtenerDatosTexto().subscribe(
-      (data) => {
+    this.contenidoService.obtenerDatosTexto().subscribe({
+      next: (data) => {
         this.textosIntroductorios = data;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al cargar los textos introductorios:', error);
       }
-    );
-  }
+    });
+  }  
 
   iniciarCuestionario() {
     if (this.temaSeleccionado) {
+      const tema = {
+        title: this.temaSeleccionado,
+        tema: this.temaSeleccionado
+      };
       this.navCtrl.navigateForward('/questionari', {
-        queryParams: { tema: this.temaSeleccionado }
+        queryParams: { tema: JSON.stringify(tema) }
       });
     } else if (this.videoSeleccionado) {
-      this.navCtrl.navigateForward('/questionari', {
-        queryParams: { video: this.videoSeleccionado }
-      });
+      const video = this.videosQuiz.find(v => v.ID === this.videoSeleccionado);
+      if (video) {
+        this.navCtrl.navigateForward('/questionari', {
+          queryParams: { video: JSON.stringify(video) }
+        });
+      }
     } else {
       console.log('Seleccione un tema o un video para iniciar el cuestionario');
     }
-
-    console.log('Tema seleccionado:', this.temaSeleccionado);
-    console.log('Video seleccionado:', this.videoSeleccionado);
-  }
+  } 
 
   verificarSeleccion(tipo: string) {
     // Verifica si el valor seleccionado es undefined o vacío
