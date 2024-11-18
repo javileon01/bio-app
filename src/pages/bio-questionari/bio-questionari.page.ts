@@ -33,6 +33,8 @@ export class BioQuestionariPage implements OnInit {
     this.temasService.obtenerTemasPregunta().subscribe({
       next: (data) => {
         this.temas = data;
+        // Ordenar por orden alfabetico
+        this.temas.sort((a, b) => a.tema.localeCompare(b.tema));
       },
       error: (error) => {
         console.error('Error al cargar los temas:', error);
@@ -44,6 +46,8 @@ export class BioQuestionariPage implements OnInit {
     this.videosQuizService.obtenerDatosVideosQuiz().subscribe({
       next: (data) => {
         this.videosQuiz = data;
+        // Ordenar por orden alfabetico
+        this.videosQuiz.sort((a, b) => a.title.localeCompare(b.title));
       },
       error: (error) => {
         console.error('Error al cargar los videos:', error);

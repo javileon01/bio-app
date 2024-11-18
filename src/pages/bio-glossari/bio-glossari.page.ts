@@ -52,11 +52,6 @@ export class BioGlossariPage implements OnInit {
     });
   }
 
-  // Método para capitalizar la primera letra de un texto
-  capitalizarPrimeraLetra(text: string): string {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  }
-
   // Método que se ejecuta cuando se presiona el botón de búsqueda
   buscarTerminos() {
     // Verifica que el campo de búsqueda no esté vacío

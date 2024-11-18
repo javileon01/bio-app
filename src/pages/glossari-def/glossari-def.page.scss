@@ -37,40 +37,33 @@ ion-content {
   --background: #f9f9f9;
 }
 
-/* Título del término */
+/* Contenedor del título y género */
+.titulo-genero-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline; /* Alinea el texto del género con la línea del título */
+  gap: 0.5em; /* Espacio entre el título y el género */
+  margin: 1em 0; /* Espacio arriba y abajo */
+}
+
 .titulo-paraula {
   font-size: 1.8em;
   font-weight: bold;
-  text-align: center;
   color: #333;
-  margin-bottom: 0.3em; /* Separación con autor y género */
-  margin-top: 1em; /* Separación con el header */
 }
 
-/* Contenedor para autor y género en una línea debajo del título */
-.autor-genero {
+.genero {
+  font-size: 1.2em;
+  color: #999;
+  font-style: italic;
+}
+
+/* Autoría centrada debajo de la imagen */
+.autor {
   text-align: center;
   font-size: 1.1em;
-  font-style: italic;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espacio entre autor y género */
-  margin-bottom: 1em; /* Separación con el contenido siguiente */
-  padding: 0 1em; /* Espaciado interno para alejar del borde */
-  max-width: 90%; /* Limitar el ancho del contenedor */
-  margin-left: auto; /* Centra el contenedor horizontalmente */
-  margin-right: auto;
-}
-
-/* Estilo para el autor */
-.autor {
   color: #666;
-}
-
-/* Estilo para el género, al lado del autor */
-.genero {
-  color: #999;
+  margin-bottom: 1em; /* Separación con el contenido siguiente */
 }
 
 /* Estilos para la definición */
@@ -93,7 +86,8 @@ ion-content {
 .image-container {
   display: flex;
   justify-content: center;
-  margin: 1.6em 0;
+  margin-top: 1.6em;
+  margin-bottom: 1em;
 
   img {
     max-width: 85%;
@@ -164,34 +158,15 @@ ion-content {
   margin-top: 35px;
 }
 
-/* Estilos para el iframe */
-.iframe-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.iframe-header {
-  background-color: #4789fc; /* Fondo amarillo */
-  text-align: left; /* Alinea el botón hacia la izquierda */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-}
-
-.iframe-header ion-button {
-  font-size: 21px;
-  font-weight: bold;
-  color: #000; /* Texto en negro */
-  --background-hover-opacity: 0;
-}
-
-.iframe-content {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
 /* Estilos para el footer */
 ion-footer ion-col {
-  padding: 0; /* Elimina el padding dentro de cada columna */
+  padding: 0;/* Elimina el padding dentro de cada columna */
 }
+
+.boton_encic {
+  --color: white;
+  --background: rgb(5, 148, 5);
+  --background-focused: rgb(5, 148, 5);
+}
+
 

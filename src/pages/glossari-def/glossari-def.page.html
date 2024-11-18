@@ -1,4 +1,4 @@
-<ion-header *ngIf="!iframeUrl">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
@@ -9,13 +9,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="!iframeUrl" padding>
-  <!-- Título con autoría en pequeño -->
-  <h1 class="titulo-paraula" *ngIf="palabraData">
-    {{ palabraTitulo }}
-  </h1>
-  <div class="autor-genero" *ngIf="palabraData?.autoriaf || palabraData?.gen">
-    <span *ngIf="palabraData?.autoriaf" class="autor">{{ palabraData.autoriaf }}</span>
+<ion-content padding>
+  <!-- Contenedor del título y género alineados horizontalmente -->
+  <div class="titulo-genero-container" *ngIf="palabraData">
+    <h1 class="titulo-paraula">{{ palabraTitulo }}</h1>
     <span *ngIf="palabraData?.gen" class="genero">({{ palabraData.gen }})</span>
   </div>
 
@@ -36,6 +33,11 @@
     >
   </div>
 
+  <!-- Autoría centrada debajo de la imagen -->
+  <div class="autor" *ngIf="palabraData?.autoriaf">
+    {{ palabraData.autoriaf }}
+  </div>
+
   <!-- Referencia a término relacionado -->
   <div 
   *ngIf="palabraData?.txten && esConsultaRelacionadaCompleta && esTerminoRelacionadoValido" 
@@ -48,29 +50,18 @@
     *ngIf="esTerminoRelacionadoDisponible && esTerminoRelacionadoValido && esConsultaRelacionadaCompleta"
     (click)="redirigirATerminoRelacionado()">
       <ion-icon name="link-outline" slot="start"></ion-icon>
-      Veure {{ terminoCapitalizado }}
+      Veure {{ terminoRelacionado }}
     </button>
 
     <!-- Mostrar mensaje de ayuda si no hay término relacionado -->
     <p *ngIf="!esTerminoRelacionadoDisponible" class="mensaje-ayuda">
-      Busque "{{ terminoCapitalizado }}" o un terme semblant en el cercador manualment.
+      S'ha detectat una errada a la base de dades. Et recomanem que busques "{{ terminoRelacionado }}" o un terme semblant en el cercador.
     </p>
   </div>
 </ion-content>
 
-<!-- Contenedor del iframe para mostrar el enlace de Viquipèdia -->
-<div *ngIf="iframeUrl" class="iframe-container">
-  <div class="iframe-header">
-    <ion-button (click)="cerrarIframe()" fill="clear">
-      <ion-icon name="arrow-back" slot="start"></ion-icon>
-      Tornar
-    </ion-button>
-  </div>
-  <iframe [src]="iframeUrl" class="iframe-content"></iframe>
-</div>
-
 <!-- Botones de enlaces a DNV, Enciclopèdia y Viquipèdia -->
-<ion-footer *ngIf="!iframeUrl">
+<ion-footer>
   <ion-toolbar>
     <ion-row>
       <ion-col size="12">
@@ -83,7 +74,7 @@
     <ion-row>
       <ion-col size="12">
         <ion-button 
-          expand="block" color="warning" *ngIf="palabraData?.encic" size="small"
+          expand="block" *ngIf="palabraData?.encic" size="small" class="boton_encic"
           [hidden]="!palabraData?.encic" (click)="abrirEnlaceEnciclopedia()">Enciclop&egrave;dia
         </ion-button>
       </ion-col>
@@ -92,7 +83,7 @@
       <ion-col size="12">
         <ion-button 
           expand="block" color="primary" *ngIf="palabraData?.viqui" size="small" 
-          [hidden]="!palabraData?.viqui" (click)="abrirIframeViquipedia()">Viquip&egrave;dia
+          [hidden]="!palabraData?.viqui" (click)="abrirEnlaceViquipedia()">Viquip&egrave;dia
         </ion-button>
       </ion-col>
     </ion-row>

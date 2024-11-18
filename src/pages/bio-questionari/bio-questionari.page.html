@@ -26,7 +26,8 @@
       [disabled]="videoSeleccionado !== null"
       (ionCancel)="temaSeleccionado = null" 
       (ionChange)="verificarSeleccion('tema')"
-      placeholder="Tria un tema">
+      placeholder="Tria un tema"
+      cancelText="Cap dels anteriors">
       <ion-select-option *ngFor="let tema of temas" [value]="tema.tema">{{ capitalizarPrimeraLetra(tema.tema) }}</ion-select-option>
     </ion-select>
   </ion-item>
@@ -38,11 +39,17 @@
       [disabled]="temaSeleccionado !== null" 
       (ionCancel)="videoSeleccionado = null"
       (ionChange)="verificarSeleccion('video')"
-      placeholder="Tria un v&iacute;deo">
+      placeholder="Tria un v&iacute;deo"
+      cancelText="Cap dels anteriors">
       <ion-select-option *ngFor="let video of videosQuiz" [value]="video.ID">{{ video.title }}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <!-- Botón de inicio del cuestionario -->
-  <ion-button expand="full" (click)="iniciarCuestionario()">INICIAR Q&Uuml;ESTIONARI</ion-button>
+  <ion-button 
+  expand="full" 
+  (click)="iniciarCuestionario()" 
+  [disabled]="temaSeleccionado === null && videoSeleccionado === null ">
+  INICIAR Q&Uuml;ESTIONARI
+  </ion-button>
 </ion-content>

@@ -50,11 +50,22 @@ export class QuestionariPage implements OnInit, OnDestroy {
     // Cargar preguntas en función del tema o ID de video
     this.questionariService.obtenerDatosPregunta().subscribe((data: Array<{ temes: string; video: string; }>) => {
       const filtro = this.cuestionarioData.nombreTema || this.cuestionarioData.ID;
+      
       // Filtra preguntas que coinciden con el tema o video
-      this.preguntas = data
-        .filter(item => item.temes?.includes(filtro) || item.video === filtro)
-        .slice(0, 10); // Limita a 10 preguntas
+      this.preguntas = data.filter(item => item.temes?.includes(filtro) || item.video === filtro);
+
+      // Aleatoriza las preguntas usando Fisher-Yates Shuffle
+      this.preguntas = this.shuffleArray(this.preguntas).slice(0, 10); // Limita a 10 preguntas
     });
+  }
+
+  // Método de Fisher-Yates para aleatorizar un array
+  private shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Genera un índice aleatorio
+      [array[i], array[j]] = [array[j], array[i]]; // Intercambia los elementos
+    }
+    return array;
   }
 
   abrirVideo() {

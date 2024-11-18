@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlossariService } from '../../services/service-glossari/glossari.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -13,9 +12,7 @@ export class GlossariDefPage implements OnInit {
   palabraData: any; // Datos completos de la palabra actual
   palabraTitulo: string = ''; // Título de la palabra con capitalización
   textoRelacionado: string = ''; // Texto formateado de término relacionado
-  terminoCapitalizado: string = ''; // Término relacionado con capitalización
   terminoRelacionado: string = ''; // Término relacionado sin "Vegeu " ni punto final
-  iframeUrl: SafeResourceUrl | null = null; // URL segura para el iframe
   esTerminoRelacionadoDisponible: boolean = false; // Estado de disponibilidad del término relacionado
   esConsultaRelacionadaCompleta: boolean = false; // Estado de consulta relacionada completa
   esTerminoRelacionadoValido: boolean = false; // Estado de validez del término relacionado
@@ -23,7 +20,6 @@ export class GlossariDefPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private glossariService: GlossariService,
-    private sanitizer: DomSanitizer,
     private navCtrl: NavController,
     private router: Router
   ) {}
@@ -42,7 +38,7 @@ export class GlossariDefPage implements OnInit {
       this.palabraData = data;
 
       if (this.palabraData?.paraula) {
-        this.palabraTitulo = this.capitalizarPrimeraLetra(this.palabraData.paraula);
+        this.palabraTitulo = this.palabraData.paraula;
       }
 
       if (this.palabraData?.txten) {
@@ -52,9 +48,6 @@ export class GlossariDefPage implements OnInit {
         // Validar si el término relacionado es válido (más de una letra y solo caracteres alfabéticos)
         this.esTerminoRelacionadoValido = this.terminoRelacionado.length > 1 && 
         /^[a-zA-Z\sÀ-ÿ]+$/.test(this.terminoRelacionado);
-
-        this.terminoCapitalizado = this.capitalizarPrimeraLetra(this.terminoRelacionado);
-        this.textoRelacionado = `Vegeu: "${this.terminoCapitalizado}"`;
 
         // Verifica si el término relacionado existe
         this.glossariService.obtenerTerminoPorNombre(this.terminoRelacionado).subscribe((resultado) => {
@@ -77,9 +70,9 @@ export class GlossariDefPage implements OnInit {
   }
 
   // Método para abrir Viquipèdia en el iframe
-  abrirIframeViquipedia() {
+  abrirEnlaceViquipedia() {
     if (this.palabraData.viqui) {
-      this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.palabraData.viqui);
+      window.open(this.palabraData.viqui, '_blank');
     }
   }
 
@@ -106,11 +99,6 @@ export class GlossariDefPage implements OnInit {
         }
       });
     }
-  }
-
-  // Método para cerrar el iframe
-  cerrarIframe() {
-    this.iframeUrl = null;
   }
 
   // Método para regresar a la página anterior
