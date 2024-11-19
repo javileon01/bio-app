@@ -29,10 +29,6 @@ const routes: Routes = [
   {
     path: 'questionari',
     loadChildren: () => import('../pages/questionari/questionari.module').then( m => m.QuestionariPageModule)
-  },
-  {
-    path: 'resultados-quiz',
-    loadChildren: () => import('../pages/resultados-quiz/resultados-quiz.module').then( m => m.ResultadosQuizPageModule)
   }
 ];
 

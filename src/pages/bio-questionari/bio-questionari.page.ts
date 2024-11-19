@@ -73,12 +73,14 @@ export class BioQuestionariPage implements OnInit {
         title: this.capitalizarPrimeraLetra(this.temaSeleccionado),
         nombreTema: this.temaSeleccionado
       };
+      
       this.navCtrl.navigateForward('/questionari', {
         queryParams: { tema: JSON.stringify(temaData) }
       });
     } else if (this.videoSeleccionado) {
       // Caso en que se selecciona un video
       const videoData = this.videosQuiz.find(v => v.ID === this.videoSeleccionado);
+
       if (videoData) {
         this.navCtrl.navigateForward('/questionari', {
           queryParams: { video: JSON.stringify(videoData) }

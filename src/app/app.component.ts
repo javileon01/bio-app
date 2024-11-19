@@ -14,11 +14,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Aquí puedes ocultar el encabezado en rutas específicas si lo necesitas
-        console.log('Navegado a la URL:', event.url);
-        const currentUrl = event.url.split(';')[0];
-        this.showHeader = !['/informacio', '/contacte', '/webs-recomanats', '/manual-usuari', '/glossari-def'].includes(currentUrl);
+        // Extraer la parte base de la URL usando una expresión regular
+        const baseUrlMatch = event.url.match(/^\/([^;?|#]*)/);
+        const pageName = baseUrlMatch ? baseUrlMatch[1] : '';
+        console.log('Navegado a la página:', pageName);
+  
+        // Muestra u oculta el encabezado dependiendo del nombre de la página
+        this.showHeader = !['informacio', 'contacte', 'webs-recomanats', 'manual-usuari', 'glossari-def', 'questionari'].includes(pageName);
       }
     });
-  }
+  }  
 }

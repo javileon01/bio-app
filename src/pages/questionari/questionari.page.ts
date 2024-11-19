@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { QuestionariService } from '../../services/service-questionari/questionari.service';
 import { TimerService } from '../../services/service-timer/timer.service';
 import { AlertController } from '@ionic/angular';
@@ -25,7 +26,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
     private questionariService: QuestionariService,
     private timerService: TimerService,
     private alertCtrl: AlertController,
-    private router: Router
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -92,19 +93,6 @@ export class QuestionariPage implements OnInit, OnDestroy {
     const alert = await this.alertCtrl.create({
       header: 'Qüestionari acabat',
       message: `Has obtingut ${this.puntosObtenidos} / ${this.totalPuntos} punts!`,
-      buttons: [
-        {
-          text: 'Ver resultados',
-          handler: () => {
-            this.router.navigate(['/resultados-quiz'], {
-              queryParams: {
-                puntosObtenidos: this.puntosObtenidos,
-                totalPuntos: this.totalPuntos,
-              },
-            });
-          },
-        },
-      ],
     });
     await alert.present();
   }
@@ -158,5 +146,9 @@ export class QuestionariPage implements OnInit, OnDestroy {
       this.timerSubscription.unsubscribe();
       this.timerSubscription = null;
     }
+  }
+
+  goBack() {
+    this.navController.back();
   }
 }
