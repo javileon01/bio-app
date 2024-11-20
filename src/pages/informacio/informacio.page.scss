@@ -24,12 +24,16 @@ ion-title {
     padding-bottom: 2px;
 }
 
-  
-/* Botón de regreso */
+/* Ajustes para ion-buttons */
+ion-buttons {
+  background-color: #fbfbfb; /* Color de fondo para los botones */
+  color: #1d1d1d; /* Color del texto del botón */
+  padding-left: 11px;
+  padding-bottom: 3px;
+}
+
 ion-button {
-  --background: transparent;
   --background-hover-opacity: 0;
-  --color: #333;
   font-size: 20px;
 }
 

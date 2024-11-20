@@ -20,6 +20,8 @@ export class QuestionariPage implements OnInit, OnDestroy {
   timerSubscription: Subscription | null = null; // Suscripción del temporizador
   tiempoRestante: string = '15:00'; // Tiempo restante mostrado en la interfaz
   cuestionarioIniciado: boolean = false; // Controla si el cuestionario ha comenzado
+  mostrarRespuestas: boolean = false; // Controla si se muestran las respuestas
+  mostrarTimer: boolean = false; // Controla si se muestra el temporizador
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +32,13 @@ export class QuestionariPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.mostrarRespuestas = false;
+
+    // Retrasar la aparición del temporizador
+    setTimeout(() => {
+      this.mostrarTimer = true; // Hacer que el temporizador sea visible después de 2 segundos
+    }, 700);
+
     // Cargar los datos del tema o video al iniciar la página
     this.route.queryParams.subscribe((params) => {
       this.cuestionarioData = params['tema'] ? JSON.parse(params['tema']) : JSON.parse(params['video'] || '{}');
@@ -38,6 +47,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.mostrarRespuestas = false;
     this.detenerTemporizador();
   }
 
@@ -85,6 +95,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
     // Detiene el temporizador y calcula el puntaje obtenido
     this.detenerTemporizador();
     this.calcularPuntaje();
+    this.mostrarRespuestas = true
     await this.mostrarResultado();
   }
 
@@ -93,6 +104,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
     const alert = await this.alertCtrl.create({
       header: 'Qüestionari acabat',
       message: `Has obtingut ${this.puntosObtenidos} / ${this.totalPuntos} punts!`,
+      buttons: ['Val']
     });
     await alert.present();
   }
@@ -112,7 +124,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
     });
   }
 
-  private esRespuestaCorrecta(pregunta: any, respuestaUsuario: string | null): boolean {
+  public esRespuestaCorrecta(pregunta: any, respuestaUsuario: string | null): boolean {
     // Comprueba si la respuesta del usuario es correcta
     if (this.esPreguntaDeTexto(pregunta)) {
       return this.normalizarTexto(respuestaUsuario) === this.normalizarTexto(pregunta.correcta);

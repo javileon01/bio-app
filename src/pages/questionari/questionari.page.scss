@@ -1,0 +1,155 @@
+/* Ajustes para ion-toolbar */
+ion-header {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-toolbar {
+    --background: #f8f9fa;
+}
+
+ion-title {
+    color: #000;
+    font-size: 19px;
+    font-family: system-ui, 
+                -apple-system, 
+                BlinkMacSystemFont, 
+                'Segoe UI', 
+                Roboto, 
+                Oxygen, 
+                Ubuntu, 
+                Cantarell, 
+                'Open Sans', 
+                'Helvetica Neue', 
+                sans-serif;
+    padding-bottom: 2px;
+}
+
+/* Botón de regreso */
+ion-button {
+    --background: transparent;
+    --background-hover-opacity: 0;
+    --color: #333;
+    font-size: 20px;
+}
+
+.timer-fixed {
+    position: fixed;
+    top: 0;
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición centrada */
+    margin-top: 2.8em; /* Margen para que no tape el encabezado */
+    width: 90%; /* Ajusta automáticamente el tamaño al contenido */
+    background: linear-gradient(90deg, #5a99d6, #438bc4); /* Azul suave a azul ligero */
+    color: white; /* Color del texto */
+    font-size: 1.3em; /* Tamaño del texto */
+    font-weight: bold; /* Hace el texto más destacado */
+    text-align: center;
+    padding: 8px 12px; /* Espaciado interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    border-radius: 8px; /* Bordes redondeados */
+    z-index: 1000; /* Para asegurarse de que esté por encima del contenido */
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Suavidad en la aparición */
+}
+
+/* Efecto hover para dar respuesta visual */
+.timer-fixed:hover {
+    transform: translateX(-50%) scale(1.02); /* Mantiene el centrado al ampliar */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+}
+
+/* Mejora la legibilidad del texto */
+.timer-fixed span {
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+}
+
+
+
+/* Margen para el título del cuestionario */
+.titulo-card {
+    margin-top: 2.7em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Margen para la tarjeta de video */
+.video-card {
+    margin-top: 4em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.1em;
+}
+
+.video-card ion-img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Ver video */
+.ver-video {
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 0.8em;
+}
+
+/* Contenedor principal del cuestionario */
+.div-principal {
+    margin-top: 2.7em;
+}
+
+/* Tarjeta de preguntas */
+.preguntas-card {
+    width: 100%;
+}
+
+/* Tarjeta de preguntas */
+ion-card {
+    margin-bottom: 1.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+/* Título de las preguntas */
+ion-card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Subtítulos en preguntas */
+ion-card-subtitle {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Imagen de las preguntas */
+ion-card-content img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para las opciones de respuesta */
+ion-item {
+    --background-hover: none;
+    --background-activated: none;
+    --border-color: transparent;
+    --inner-border-width: 0px;
+    margin-bottom: 0.5em;
+}
+
+ion-label {
+    font-size: 1em;
+}
+
+.mostrar-respuesta {
+    --background: #05b434;
+    --color: white;
+}

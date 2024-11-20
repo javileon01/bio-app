@@ -70,10 +70,10 @@ export class BioQuestionariPage implements OnInit {
     if (this.temaSeleccionado) {
       // Caso en que se selecciona un tema
       const temaData = {
-        title: this.capitalizarPrimeraLetra(this.temaSeleccionado),
+        titulo: this.capitalizarPrimeraLetra(this.temaSeleccionado),
         nombreTema: this.temaSeleccionado
       };
-      
+
       this.navCtrl.navigateForward('/questionari', {
         queryParams: { tema: JSON.stringify(temaData) }
       });

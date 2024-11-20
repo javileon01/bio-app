@@ -5,96 +5,126 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ cuestionarioData?.title || 'Q&uuml;estionari' }}</ion-title>
+    <ion-title>{{ cuestionarioData?.title || cuestionarioData?.titulo }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
   <!-- Mostrar siempre el temporizador -->
-  <div class="tiempo">
+  <div class="timer-fixed" *ngIf="mostrarTimer">
     Temps restant: {{ tiempoRestante }}
   </div>
 
   <!-- Mostrar el título del cuestionario y botón de inicio antes de comenzar -->
   <div *ngIf="!cuestionarioIniciado">
 
-    <!-- Mostrar Titulo si aplica -->
-    <ion-card *ngIf="cuestionarioData?.title">
+    <!-- Mostrar Título si aplica -->
+    <ion-card *ngIf="cuestionarioData?.titulo" class="titulo-card">
       <ion-card-header>
-        <ion-card-title>Qüestionari de {{ cuestionarioData.title }}</ion-card-title>
+        <ion-card-title>Q&uuml;estionari: {{ cuestionarioData.titulo }}</ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <!-- Mostrar detalles del video en modo tarjeta (si aplica) -->
-    <ion-card *ngIf="cuestionarioData?.enllac && cuestionarioData?.image && cuestionarioData?.id" (click)="abrirVideo()">
+    <ion-card
+    *ngIf="cuestionarioData?.enllac && cuestionarioData?.image && cuestionarioData?.id" 
+    (click)="abrirVideo()" 
+    class="video-card">
       <ion-img 
-      [src]="'http://bioaps.uv.es/site/assets/files/' + cuestionarioData.id + '/' + cuestionarioData.image" 
-      alt="Imagen del Video">
+        [src]="'http://bioaps.uv.es/site/assets/files/' + cuestionarioData.id + '/' + cuestionarioData.image" 
+        alt="Imagen del Video">
       </ion-img>
       <ion-card-header>
         <ion-card-title>{{ cuestionarioData.title }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p class="ver-video">Ver Video</p>
+        <p class="ver-video">Veure v&iacute;deo</p>
       </ion-card-content>
     </ion-card>
 
     <!-- Botón para iniciar el cuestionario -->
     <ion-button expand="block" color="secondary" (click)="iniciarCuestionario()">
-      Iniciar Qüestionari
+      Iniciar Q&uuml;estionari
     </ion-button>
   </div>
 
   <!-- Preguntas del cuestionario (visible solo cuando se ha iniciado el cuestionario) -->
-  <div *ngIf="cuestionarioIniciado">
+  <div *ngIf="cuestionarioIniciado" class="div-principal">
     <ion-list *ngIf="preguntas.length > 0">
       <ion-item *ngFor="let pregunta of preguntas; let i = index">
-        <ion-card>
+        <ion-card class="preguntas-card">
+        <img *ngIf="pregunta.image" [src]="'http://bioaps.uv.es/site/assets/files/' + pregunta.id + '/' + pregunta.image" alt="Imagen de la pregunta" />
           <ion-card-header>
             <ion-card-title>{{ i + 1 }}. {{ pregunta.pregunta }}</ion-card-title>
-            <ion-card-subtitle>{{ pregunta.punt }} Punts</ion-card-subtitle>
-            <ion-card-subtitle *ngIf="pregunta.image">Imatge disponible</ion-card-subtitle>
+            <ion-card-subtitle>{{ pregunta.punt }} punts</ion-card-subtitle>
           </ion-card-header>
 
-          <!-- Imagen de la pregunta (si disponible) -->
-          <ion-card-content *ngIf="pregunta.image">
-            <img [src]="'http://bioaps.uv.es/site/assets/files/' + pregunta.id + '/' + pregunta.image" alt="Imagen de la pregunta" />
-          </ion-card-content>
-
-          <!-- Respuesta de texto (para preguntas sin opciones) -->
           <div *ngIf="esPreguntaDeTexto(pregunta)">
-            <ion-item>
+            <ion-item [color]="mostrarRespuestas ? (esRespuestaCorrecta(pregunta, respuestas[i]) ? 'success' : 'danger') : ''">
               <ion-label position="stacked">Resposta:</ion-label>
               <ion-input [(ngModel)]="respuestas[i]" placeholder="Escriu la resposta aquí"></ion-input>
             </ion-item>
+          
+            <!-- Mostrar la respuesta correcta con fondo verde si es incorrecta -->
+            <ion-item *ngIf="mostrarRespuestas && !esRespuestaCorrecta(pregunta, respuestas[i])" class="mostrar-respuesta">
+              <ion-label>Resposta correcta: {{ pregunta.correcta }}</ion-label>
+            </ion-item>
           </div>
+          
 
           <!-- Opciones de selección (para preguntas con opciones) -->
           <ion-radio-group *ngIf="!esPreguntaDeTexto(pregunta)" (ionChange)="seleccionarRespuesta(i, $event.detail.value)">
-            <ion-item *ngIf="pregunta.op1 !== 'nohay'">
+            <!-- Opción 1 -->
+            <ion-item 
+              *ngIf="pregunta.op1 !== 'nohay'"
+              [color]="mostrarRespuestas 
+              ? (respuestas[i] === pregunta.op1 ? (esRespuestaCorrecta(pregunta, pregunta.op1) ? 'success' : 'danger') : '') : ''">
               <ion-label>{{ pregunta.op1 }}</ion-label>
               <ion-radio value="{{ pregunta.op1 }}"></ion-radio>
             </ion-item>
-            <ion-item *ngIf="pregunta.op2 !== 'nohay'">
+          
+            <!-- Opción 2 -->
+            <ion-item 
+              *ngIf="pregunta.op2 !== 'nohay'"
+              [color]="mostrarRespuestas 
+              ? (respuestas[i] === pregunta.op2 ? (esRespuestaCorrecta(pregunta, pregunta.op2) ? 'success' : 'danger') : '') : ''">
               <ion-label>{{ pregunta.op2 }}</ion-label>
               <ion-radio value="{{ pregunta.op2 }}"></ion-radio>
             </ion-item>
-            <ion-item *ngIf="pregunta.op3 !== 'nohay'">
+          
+            <!-- Opción 3 -->
+            <ion-item 
+              *ngIf="pregunta.op3 !== 'nohay'"
+              [color]="mostrarRespuestas 
+              ? (respuestas[i] === pregunta.op3 ? (esRespuestaCorrecta(pregunta, pregunta.op3) ? 'success' : 'danger') : '') : ''">
               <ion-label>{{ pregunta.op3 }}</ion-label>
               <ion-radio value="{{ pregunta.op3 }}"></ion-radio>
             </ion-item>
-            <ion-item *ngIf="pregunta.op4 !== 'nohay'">
+          
+            <!-- Opción 4 -->
+            <ion-item 
+              *ngIf="pregunta.op4 !== 'nohay'"
+              [color]="mostrarRespuestas
+              ? (respuestas[i] === pregunta.op4 ? (esRespuestaCorrecta(pregunta, pregunta.op4) ? 'success' : 'danger') : '') : ''">
               <ion-label>{{ pregunta.op4 }}</ion-label>
               <ion-radio value="{{ pregunta.op4 }}"></ion-radio>
             </ion-item>
+          
+            <!-- Mostrar respuesta correcta si el usuario falla -->
+            <ion-item 
+            *ngIf="mostrarRespuestas && !esRespuestaCorrecta(pregunta, respuestas[i])"
+            class="mostrar-respuesta">
+              <ion-label>Resposta correcta: {{ pregunta.correcta }}</ion-label>
+            </ion-item>
           </ion-radio-group>
+          
         </ion-card>
       </ion-item>
     </ion-list>
 
     <!-- Botón para finalizar el cuestionario -->
-    <ion-button expand="full" (click)="finalizarCuestionario()">Acabar Qüestionari</ion-button>
+    <ion-button expand="block" (click)="finalizarCuestionario()" color="secondary">Acabar Qüestionari</ion-button>
   </div>
 
 </ion-content>
