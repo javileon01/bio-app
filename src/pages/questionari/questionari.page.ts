@@ -22,6 +22,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
   cuestionarioIniciado: boolean = false; // Controla si el cuestionario ha comenzado
   mostrarRespuestas: boolean = false; // Controla si se muestran las respuestas
   mostrarTimer: boolean = false; // Controla si se muestra el temporizador
+  cargandoCuestionario: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,18 +34,24 @@ export class QuestionariPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.mostrarRespuestas = false;
-
-    // Retrasar la aparición del temporizador
+    this.mostrarTimer = false;
+    this.cuestionarioIniciado = false;
+    this.cargandoCuestionario = true;
+  
     setTimeout(() => {
-      this.mostrarTimer = true; // Hacer que el temporizador sea visible después de 2 segundos
+      this.route.queryParams.subscribe((params) => {
+        this.cuestionarioData = params['tema'] 
+          ? JSON.parse(params['tema']) 
+          : JSON.parse(params['video'] || '{}');
+        console.log('Datos del cuestionario:', this.cuestionarioData);
+  
+        this.cargarPreguntas();
+      });
+  
+      this.mostrarTimer = true;
+      this.cargandoCuestionario = false; // Botón se habilita después del retraso
     }, 700);
-
-    // Cargar los datos del tema o video al iniciar la página
-    this.route.queryParams.subscribe((params) => {
-      this.cuestionarioData = params['tema'] ? JSON.parse(params['tema']) : JSON.parse(params['video'] || '{}');
-      this.cargarPreguntas();
-    });
-  }
+  }  
 
   ngOnDestroy() {
     this.mostrarRespuestas = false;
@@ -58,17 +65,30 @@ export class QuestionariPage implements OnInit, OnDestroy {
   }
 
   cargarPreguntas() {
-    // Cargar preguntas en función del tema o ID de video
-    this.questionariService.obtenerDatosPregunta().subscribe((data: Array<{ temes: string; video: string; }>) => {
-      const filtro = this.cuestionarioData.nombreTema || this.cuestionarioData.ID;
-      
-      // Filtra preguntas que coinciden con el tema o video
-      this.preguntas = data.filter(item => item.temes?.includes(filtro) || item.video === filtro);
-
-      // Aleatoriza las preguntas usando Fisher-Yates Shuffle
-      this.preguntas = this.shuffleArray(this.preguntas).slice(0, 10); // Limita a 10 preguntas
+    this.questionariService.obtenerDatosPregunta().subscribe({
+      next: (data: any[]) => {
+        console.log('Preguntas obtenidas:', data);
+  
+        const filtro = this.cuestionarioData.nombreTema || this.cuestionarioData.ID;
+        this.preguntas = data.filter(
+          item => item.temes?.includes(filtro) || item.video === filtro
+        );
+  
+        this.preguntas = this.shuffleArray(this.preguntas).slice(0, 10);
+        console.log('Preguntas después de barajar:', this.preguntas);
+  
+        this.cargandoCuestionario = false; // Botón listo para ser presionado
+      },
+      error: (err) => {
+        console.error('Error al cargar las preguntas:', err);
+        alert('Hubo un problema al cargar las preguntas. Inténtalo de nuevo.');
+        this.cargandoCuestionario = false;
+      },
+      complete: () => {
+        console.log('Carga de preguntas completa');
+      }
     });
-  }
+  }  
 
   // Método de Fisher-Yates para aleatorizar un array
   private shuffleArray(array: any[]): any[] {
@@ -125,12 +145,22 @@ export class QuestionariPage implements OnInit, OnDestroy {
   }
 
   public esRespuestaCorrecta(pregunta: any, respuestaUsuario: string | null): boolean {
-    // Comprueba si la respuesta del usuario es correcta
     if (this.esPreguntaDeTexto(pregunta)) {
-      return this.normalizarTexto(respuestaUsuario) === this.normalizarTexto(pregunta.correcta);
+      // Comparar respuestas normalizadas para preguntas de texto
+      const correcta = this.normalizarTexto(respuestaUsuario) === this.normalizarTexto(pregunta.correcta);
+  
+      // Si es correcta, actualiza la respuesta del usuario con el formato original
+      if (correcta && respuestaUsuario !== pregunta.correcta) {
+        this.respuestas[this.preguntas.indexOf(pregunta)] = pregunta.correcta;
+      }
+  
+      return correcta;
+    } else {
+      // Para preguntas de opciones, la comparación es directa
+      return respuestaUsuario === pregunta.correcta;
     }
-    return respuestaUsuario === pregunta.correcta;
   }
+  
 
   esPreguntaDeTexto(pregunta: any): boolean {
     // Verifica si la pregunta es de tipo texto (sin opciones de selección)
@@ -138,8 +168,18 @@ export class QuestionariPage implements OnInit, OnDestroy {
   }
 
   private normalizarTexto(texto: string | null): string {
-    // Normaliza el texto para comparar sin importar mayúsculas, minúsculas o acentos
-    return (texto || '').trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const palabrasIgnoradas = ["i", "el", "la", "els", "les"]; // Añade más si es necesario
+    return (texto || '')
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .split(" ") // Divide en palabras
+      .filter(palabra => !palabrasIgnoradas.includes(palabra)) // Elimina palabras ignoradas
+      .sort() // Ordena alfabéticamente
+      .join(" "); // Une de nuevo
   }
 
   iniciarTemporizador(duracion: number) {
@@ -158,6 +198,27 @@ export class QuestionariPage implements OnInit, OnDestroy {
       this.timerSubscription.unsubscribe();
       this.timerSubscription = null;
     }
+  }
+
+  reiniciarCuestionario() {
+    // Detener cualquier temporizador activo
+    this.detenerTemporizador();
+  
+    // Reiniciar variables de estado
+    this.cuestionarioIniciado = false;
+    this.mostrarRespuestas = false;
+    this.puntosObtenidos = 0;
+    this.totalPuntos = 0;
+    this.respuestas = [];
+    this.tiempoRestante = '15:00';
+  
+    // Recargar las preguntas y barajarlas de nuevo
+    this.cargarPreguntas();
+  
+    // Reiniciar el temporizador (opcional: ajusta la duración si es necesario)
+    setTimeout(() => {
+      this.iniciarCuestionario(); // Comienza de nuevo el cuestionario
+    }, 500);
   }
 
   goBack() {

@@ -55,15 +55,13 @@ ion-button {
 .timer-fixed:hover {
     transform: translateX(-50%) scale(1.02); /* Mantiene el centrado al ampliar */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
-}
+    }
 
 /* Mejora la legibilidad del texto */
 .timer-fixed span {
     letter-spacing: 1px; /* Espaciado entre letras */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra del texto */
 }
-
-
 
 /* Margen para el título del cuestionario */
 .titulo-card {
@@ -72,6 +70,13 @@ ion-button {
     font-weight: bold;
     color: #333;
     text-align: center;
+}
+
+.titulo-card img {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 100%;
 }
 
 /* Margen para la tarjeta de video */
@@ -112,11 +117,11 @@ ion-card {
     margin-bottom: 1.5em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-color: #f8f9fa;
+    background-color: #cfcfcf;
 }
 
 /* Título de las preguntas */
-ion-card-title {
+    ion-card-title {
     font-size: 1.4em;
     font-weight: bold;
     color: #333;
@@ -136,17 +141,33 @@ ion-card-content img {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para las opciones de respuesta */
+/* Items de respuesta */
 ion-item {
-    --background-hover: none;
-    --background-activated: none;
-    --border-color: transparent;
-    --inner-border-width: 0px;
-    margin-bottom: 0.5em;
+    display: flex; /* Usa flex para alinear los elementos */
+    align-items: center; /* Alinea verticalmente el contenido */
+    --inner-padding-start: 16px; /* Ajusta el padding interno inicial */
+    --inner-padding-end: 16px; /* Ajusta el padding interno al final */
+    --background-hover: none; /* Elimina fondo al pasar el cursor */
+    --inner-border-width: 0; /* Quita las líneas internas */
+}
+
+ion-item[disabled] {
+    opacity: 0.9;
 }
 
 ion-label {
-    font-size: 1em;
+    flex-grow: 1; /* Permite que el texto ocupe todo el espacio restante */
+    white-space: normal; /* Permite que el texto ocupe varias líneas si es necesario */
+    margin-right: 10px; /* Asegura un pequeño espacio entre el texto y el botón */
+}
+
+.reiniciar-button {
+    font-weight: bold;
+}
+
+.tornar-button {
+    margin-top: 0.8em;
+    font-weight: bold;
 }
 
 .mostrar-respuesta {
