@@ -32,6 +32,30 @@ ion-button {
     font-size: 20px;
 }
 
+/* Mensaje de carga */
+.cargando-quiz {
+    display: flex;
+    justify-content: center;
+}
+
+.cargando-quiz .loading-container {
+    display: inline-flex; /* Usa inline-flex para mantenerlos en la misma línea */
+    gap: 0.4em; /* Espacio entre el texto y el spinner */
+  }
+  
+  .cargando-quiz p {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0; /* Elimina márgenes para evitar desalineaciones */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  }
+  
+  .cargando-quiz ion-spinner {
+    font-size: 1.3em; /* Ajusta el tamaño del spinner si es necesario */
+    margin-top: 0.2em; /* Ajusta el espacio entre el texto y el spinner */
+  }
+  
+/* Timer fijo en la parte superior */
 .timer-fixed {
     position: fixed;
     top: 0;
