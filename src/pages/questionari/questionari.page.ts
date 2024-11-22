@@ -23,6 +23,7 @@ export class QuestionariPage implements OnInit, OnDestroy {
   mostrarRespuestas: boolean = false; // Controla si se muestran las respuestas
   mostrarTimer: boolean = false; // Controla si se muestra el temporizador
   cargandoCuestionario: boolean = true;
+  contienePreguntas: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -72,7 +73,10 @@ export class QuestionariPage implements OnInit, OnDestroy {
         this.preguntas = data.filter(
           item => item.temes?.includes(filtro) || item.video === filtro
         );
-  
+
+        this.contienePreguntas = this.preguntas.length > 0;
+        console.log('Preguntas filtradas:', this.preguntas);
+        
         this.preguntas = this.shuffleArray(this.preguntas).slice(0, 10);
         console.log('Preguntas después de barajar:', this.preguntas);
   

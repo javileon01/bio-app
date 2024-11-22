@@ -46,8 +46,8 @@
 
     <!-- Botón para iniciar el cuestionario -->
     <ion-button
-      *ngIf="!cuestionarioIniciado"
-      [disabled]="cargandoCuestionario" 
+      *ngIf="!cuestionarioIniciado && contienePreguntas"
+      [disabled]="cargandoCuestionario"
       expand="block" 
       color="secondary" 
       (click)="iniciarCuestionario()">
@@ -58,6 +58,20 @@
         Iniciar Q&uuml;estionari
       </ng-template>
     </ion-button>
+
+    <!-- Mensaje de error si no hay preguntas -->
+    <ion-card *ngIf="!contienePreguntas">
+      <ion-card-header>
+        <ion-card-title>Sense preguntes disponibles</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        No s&apos;han trobat preguntes per a realitzar un q&uuml;estionari sobre:
+        {{ cuestionarioData?.title || cuestionarioData?.titulo }}
+      </ion-card-content>
+      <ion-button expand="block" color="danger" (click)="goBack()">
+        Tornar
+      </ion-button>
+    </ion-card>
 
   </div>
 
@@ -155,28 +169,29 @@
     expand="block" 
     (click)="finalizarCuestionario()" 
     color="secondary">
-    Acabar Qüestionari
+    Acabar Q&uuml;estionari
     </ion-button>
 
-    <!-- Botón para finalizar el cuestionario -->
+    <!-- Botón para reiniciar el cuestionario -->
     <ion-button
     *ngIf="mostrarRespuestas"
     expand="block" 
     (click)="reiniciarCuestionario()" 
     color="primary"
     class="reiniciar-button">
-    Reiniciar Qüestionari
+    Reiniciar Q&uuml;estionari
     </ion-button>
 
     <!-- Botón para volver a la página anterior -->
     <ion-button
     *ngIf="mostrarRespuestas"
+    size="small"
     expand="block"
     (click)="goBack()" 
     color="secondary"
     class="tornar-button">
     <ion-icon name="arrow-back" slot="start"></ion-icon>
-    TORNAR
+    Tornar
     </ion-button>
 
   </div>
