@@ -49,7 +49,6 @@ export class QuestionariPage implements OnInit, OnDestroy {
       });
   
       this.mostrarTimer = true;
-      this.cargandoCuestionario = false; // Botón se habilita después del retraso
     }, 700);
   }  
 

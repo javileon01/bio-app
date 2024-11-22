@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="!selectedUrl">
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p *ngIf="!errorMessage && lista.length === 0">Cargant webs recomanades...</p>
+    <p *ngIf="!errorMessage && lista.length === 0" class="carregant-webs">Carregant webs recomanats...</p>
 
     <ion-card *ngFor="let datos of lista" class="custom-card" (click)="openLink(datos)">
       <ion-card-content>

@@ -15,7 +15,7 @@
   <ion-card class="manual-card">
     <ion-card-content>
       <div class="section">
-        <img src="assets/imgs/bioglossarimini.png" alt="BioGlossari" class="manual-img" />
+        <img src="assets/imgs/bioglossarimini.png" alt="BioGlossari" class="manual-img-glos" />
         <p *ngFor="let datosT of listaTexto">
           <span *ngIf="datosT.localizacion === 'app_instruccionsglo'">{{datosT.texto}}</span>
         </p>
@@ -27,7 +27,7 @@
   <ion-card class="manual-card">
     <ion-card-content>
       <div class="section">
-        <img src="assets/imgs/biopreguntesmini.png" alt="BioPregunta" class="manual-img" />
+        <img src="assets/imgs/biopreguntesmini.png" alt="BioPregunta" class="manual-img-preg" />
         <p *ngFor="let datosT of listaTexto">
           <span *ngIf="datosT.localizacion === 'app_instruccionspre'">{{datosT.texto}}</span>
         </p>
@@ -39,7 +39,7 @@
   <ion-card class="manual-card">
     <ion-card-content>
       <div class="section">
-        <img src="assets/imgs/bioquestionarimini.png" alt="BioQüestionari" class="manual-img" />
+        <img src="assets/imgs/bioquestionarimini.png" alt="BioQüestionari" class="manual-img-quiz" />
         <p *ngFor="let datosT of listaTexto">
           <span *ngIf="datosT.localizacion === 'app_instruccionsques'">{{datosT.texto}}</span>
         </p>
@@ -51,7 +51,7 @@
   <ion-card class="manual-card">
     <ion-card-content>
       <div class="section">
-        <img src="assets/imgs/biovideosmini.png" alt="BioVídeos" class="manual-img" />
+        <img src="assets/imgs/biovideosmini.png" alt="BioVídeos" class="manual-img-vid" />
         <p *ngFor="let datosT of listaTexto">
           <span *ngIf="datosT.localizacion === 'app_instruccionsvid'">{{datosT.texto}}</span>
         </p>
