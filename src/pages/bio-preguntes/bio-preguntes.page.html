@@ -1,5 +1,35 @@
 <ion-content class="ion-padding">
-  <h1>Bienvenido a BioPreguntes</h1>
-  <p>Aquí encontrarás una lista de preguntas de biología...</p>
-  <!-- Resto del contenido de la página -->
+  <!-- Contenedor de imagen de BioPreguntesApp con padding superior -->
+  <div class="logo-container">
+    <img ngOptimizedImage src="assets/imgs/biopreguntesaps.png" alt="Logo BioPreguntesApp" class="logo-biopreguntesapp">
+  </div>
+
+  <!-- Contenedor de imagen de Universitat de Valencia con padding superior -->
+  <div class="logo-container">
+    <img ngOptimizedImage src="assets/imgs/uvimg.png" alt="Logo UV" class="logo-uv">
+  </div>
+
+  <!-- Texto introductorio -->
+  <div class="intro-text-container">
+    <p>Prem en una foto per a comen&ccedil;ar el q&uuml;estionari!</p>
+  </div>
+
+  <!-- Lista de cuestionarios -->
+  <ion-card 
+  *ngFor="let cuestionario of cuestionarios" 
+  (click)="abrirCuestionario(cuestionario)">
+
+  <!-- Título del cuestionario -->
+  <ion-card-header>
+    <ion-card-title>{{ cuestionario.titol }}</ion-card-title>
+  </ion-card-header>
+
+  <!-- Imagen del cuestionario -->
+  <ion-card-content>
+    <img 
+      [src]="'http://bioaps.uv.es/site/assets/files/' + cuestionario.id + '/' + cuestionario.img" 
+      alt="Imagen del cuestionario">
+  </ion-card-content>
+  </ion-card>
+
 </ion-content>

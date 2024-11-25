@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
         console.log('Navegado a la página:', pageName);
   
         // Muestra u oculta el encabezado dependiendo del nombre de la página
-        this.showHeader = !['informacio', 'contacte', 'webs-recomanats', 'manual-usuari', 'glossari-def', 'questionari'].includes(pageName);
+        this.showHeader = !['informacio', 'contacte', 'webs-recomanats', 
+        'manual-usuari', 'glossari-def', 'questionari', 'preg-resolver'].includes(pageName);
       }
     });
   }  

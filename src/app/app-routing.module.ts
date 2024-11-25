@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'questionari',
     loadChildren: () => import('../pages/questionari/questionari.module').then( m => m.QuestionariPageModule)
+  },
+  {
+    path: 'preg-resolver',
+    loadChildren: () => import('../pages/preg-resolver/preg-resolver.module').then( m => m.PregResolverPageModule)
   }
 ];
 

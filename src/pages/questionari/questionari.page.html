@@ -92,8 +92,8 @@
           <!-- Preguntas de texto -->
           <div *ngIf="esPreguntaDeTexto(pregunta)">
             <ion-item 
-            [color]="mostrarRespuestas && respuestas[i]?.trim() ? (esRespuestaCorrecta(pregunta, respuestas[i]) 
-            ? 'success' : 'danger') : ''"
+            [color]="mostrarRespuestas && respuestas[i] && respuestas[i].trim() ? 
+              (esRespuestaCorrecta(pregunta, respuestas[i]) ? 'success' : 'danger') : ''"
             [disabled]="mostrarRespuestas">
               <ion-label position="stacked">Resposta:</ion-label>
               <ion-input

@@ -1,0 +1,78 @@
+/* Estilos generales */
+ion-content {
+    --background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor de las imágenes principales */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilo para la imagen de BioQuestionariApp */
+.logo-biopreguntesapp {
+    margin-top: 15px;
+    max-width: 75%;
+    height: auto;
+}
+
+/* Estilo para la imagen de Universitat de Valencia */
+.logo-uv {
+    max-width: 75%;
+    height: auto;
+}
+
+/* Contenedor del texto introductorio */
+.intro-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Cambia el alineado a justificado */
+    font-weight: bold;
+    font-size: 1.1rem; /* Reduce ligeramente el tamaño para un aspecto más compacto */
+    color: #333;
+    margin-top: 1em;
+}
+
+/* Estilo para las tarjetas de los cuestionarios */
+ion-card {
+    margin-bottom: 2em; /* Espaciado entre tarjetas */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    overflow: hidden; /* Evitar desbordamiento */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Efectos suaves */
+    background-color: #dae9ff; /* Color de fondo claro */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Efecto hover para las tarjetas */
+ion-card:hover {
+    transform: translateY(-5px); /* Mueve la tarjeta ligeramente hacia arriba */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilo de las imágenes dentro de las tarjetas */
+ion-card-content img {
+    width: 100%; /* Ancho completo */
+    height: auto; /* Mantener proporción */
+    border-bottom: 3px solid #eaeaea; /* Línea decorativa */
+    border-radius: 8px; /* Ajuste redondeado */
+}
+
+/* Contenido del card */
+ion-card-content {
+    padding: 12px; /* Espaciado interno */
+    text-align: center; /* Centrado */
+}
+
+/* Títulos en las tarjetas */
+ion-card-title {
+    font-size: 1.4rem; /* Tamaño del título */
+    font-weight: 600; /* Seminegrita */
+    color: #444; /* Color neutro */
+    margin-top: 8px; /* Separación del título */
+}
