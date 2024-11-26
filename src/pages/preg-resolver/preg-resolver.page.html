@@ -51,7 +51,8 @@
     <ion-input
       type="text"
       placeholder="dd/mm/aaaa"
-      [(ngModel)]="fechaPublicacion">
+      [(ngModel)]="fechaPublicacion"
+      (keydown.enter)="intentarFinalizarCuestionario()">
     </ion-input>
   </ion-item>
 

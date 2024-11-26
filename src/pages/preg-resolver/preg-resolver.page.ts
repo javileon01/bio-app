@@ -36,7 +36,16 @@ export class PregResolverPage implements OnInit {
   }
 
   finalizarCuestionario() {
-    this.mostrarRespuestas = true; // Muestra la retroalimentación de las respuestas
+    if (this.respuestaSeleccionada && this.fechaPublicacion) {
+      this.mostrarRespuestas = true; // Muestra la retroalimentación de las respuestas
+    }
+  }
+
+  intentarFinalizarCuestionario() {
+    // Finaliza el cuestionario si los campos requeridos están completos
+    if (!this.mostrarRespuestas && this.respuestaSeleccionada && this.fechaPublicacion) {
+      this.finalizarCuestionario();
+    }
   }
 
   esRespuestaCorrecta(opcion: string): boolean {
@@ -47,10 +56,10 @@ export class PregResolverPage implements OnInit {
     if (!fecha) {
       return false;
     }
-  
+
     const fechaLimpiada = fecha.trim().replace(/\s+/g, ''); // Elimina espacios adicionales
     return fechaLimpiada === this.cuestionarioData.data.trim();
-  }  
+  }
 
   goBack() {
     this.navController.back();
