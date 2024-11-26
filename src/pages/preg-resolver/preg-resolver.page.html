@@ -1,13 +1,93 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>preg-resolver</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ cuestionarioData?.titol || 'Q&uuml;estionari' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">preg-resolver</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <!-- Imagen del cuestionario -->
+  <ion-card *ngIf="cuestionarioData?.img" class="image-card">
+    <img [src]="'http://bioaps.uv.es/site/assets/files/' + cuestionarioData.id + '/' + cuestionarioData.img" alt="Imagen del cuestionario">
+  </ion-card>
+
+  <!-- Enunciado del cuestionario -->
+  <div class="question-container">
+    <p>{{ cuestionarioData?.enun }}</p>
+    <p *ngIf="cuestionarioData?.enllac">
+      <a href="{{ cuestionarioData.enllac }}" target="_blank">Consulta el web per trobar la imatge</a>
+    </p>
+  </div>
+
+  <!-- Opciones de respuesta -->
+  <ion-list>
+    <ion-item
+      *ngFor="let opcion of opciones"
+      [color]="mostrarRespuestas && respuestaSeleccionada === opcion 
+        ? (esRespuestaCorrecta(opcion) ? 'success' : 'danger') : ''"
+      (click)="seleccionarRespuesta(opcion)"
+      [disabled]="mostrarRespuestas">
+      <ion-label>{{ opcion }}</ion-label>
+      <ion-checkbox slot="start" [checked]="respuestaSeleccionada === opcion"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mostrar respuesta correcta si es incorrecta -->
+  <ion-item
+    *ngIf="mostrarRespuestas && respuestaSeleccionada !== null 
+      && !esRespuestaCorrecta(respuestaSeleccionada)"
+    color="success">
+    <ion-label>Resposta correcta: {{ cuestionarioData.correcta }}</ion-label>
+  </ion-item>
+
+  <!-- Input para la fecha de publicación -->
+  <ion-item [color]="mostrarRespuestas && esFechaCorrecta(fechaPublicacion) ? 'success' : null">
+    <ion-label position="stacked">Data de publicaci&oacute;:</ion-label>
+    <ion-input
+      type="text"
+      placeholder="dd/mm/aaaa"
+      [(ngModel)]="fechaPublicacion">
+    </ion-input>
+  </ion-item>
+
+  <!-- Mostrar la fecha correcta si es incorrecta -->
+  <ion-item
+    *ngIf="mostrarRespuestas && fechaPublicacion !== null && !esFechaCorrecta(fechaPublicacion)"
+    color="success">
+    <ion-label>Data correcta: {{ cuestionarioData.data }}</ion-label>
+  </ion-item>
+
+  <!-- Explicación de la respuesta -->
+  <ion-card *ngIf="mostrarRespuestas && cuestionarioData?.explicacio" class="explicacion-card">
+    <ion-card-header>
+      <ion-card-title>Explicació</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ cuestionarioData.explicacio }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botón de finalización -->
+  <ion-button
+    class="finalizar-button"
+    expand="block"
+    (click)="finalizarCuestionario()"
+    [disabled]="!respuestaSeleccionada || !fechaPublicacion || mostrarRespuestas">
+    Finalitzar
+  </ion-button>
+
+  <!-- Botón de Tornar -->
+  <ion-button
+    class="tornar-button"
+    expand="block"
+    (click)="goBack()"
+    *ngIf="mostrarRespuestas">
+    Tornar
+  </ion-button>
+
 </ion-content>
