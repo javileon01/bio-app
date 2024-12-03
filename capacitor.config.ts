@@ -13,7 +13,22 @@ const config: CapacitorConfig = {
       androidScaleType: 'CENTER_CROP', // Escalado para Android
       showSpinner: true, // Muestra un spinner de carga
       spinnerColor: "#000000", // Color del spinner
-    }
+    },
+    // Aquí puedes añadir configuraciones para otros plugins
+    StatusBar: {
+      backgroundColor: "#ffffff", // Color del fondo de la barra de estado
+      style: "DARK" // Estilo del texto en la barra de estado (DARK o LIGHT)
+    },
+  },
+  server: {
+    // Permitir conexiones HTTP para desarrollo
+    cleartext: true, // Activa conexiones no seguras (HTTP)
+    androidScheme: "http", // Esquema para Android (http o https)
+    hostname: "localhost", // Host de tu servidor de desarrollo
+  },
+  android: {
+    allowMixedContent: true, // Permitir contenido mixto (HTTP/HTTPS)
+    webContentsDebuggingEnabled: true, // Habilitar depuración para desarrollo
   }
 };
 
