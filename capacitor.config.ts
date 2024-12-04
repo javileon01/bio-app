@@ -14,11 +14,6 @@ const config: CapacitorConfig = {
       showSpinner: true, // Muestra un spinner de carga
       spinnerColor: "#000000", // Color del spinner
     },
-    // Aquí puedes añadir configuraciones para otros plugins
-    StatusBar: {
-      backgroundColor: "#ffffff", // Color del fondo de la barra de estado
-      style: "DARK" // Estilo del texto en la barra de estado (DARK o LIGHT)
-    },
   },
   server: {
     // Permitir conexiones HTTP para desarrollo

@@ -46,8 +46,8 @@
   </ion-item>
 
   <!-- Input para la fecha de publicación -->
-  <ion-item [color]="mostrarRespuestas && esFechaCorrecta(fechaPublicacion) ? 'success' : null">
-    <ion-label position="stacked">Data de publicaci&oacute;:</ion-label>
+  <ion-item [color]="mostrarRespuestas ? (esFechaCorrecta(fechaPublicacion) ? 'success' : 'danger') : null">
+    <ion-label position="stacked" class="fecha-publicacion">Data de publicaci&oacute;:</ion-label>
     <ion-input
       type="text"
       placeholder="dd/mm/aaaa"

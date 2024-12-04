@@ -97,6 +97,10 @@ ion-item[ion-input] {
     --inner-padding-end: 16px;
 }
 
+.fecha-publicacion {
+    font-size: 1.2em;
+}
+
 /* Tarjeta para la explicación */
 .explicacion-card {
     margin-top: 1.5em;
@@ -122,7 +126,7 @@ ion-item[ion-input] {
 .explicacion-card ion-card-content p {
     margin: 0 0 1em 0; /* Espaciado inferior entre párrafos */
     padding: 0;
-    font-size: 1.3em; /* Tamaño de letra más grande */
+    font-size: 1.1em; /* Tamaño de letra más grande */
     line-height: 1.8em; /* Espaciado entre líneas más amplio */
     text-align: justify; /* Justifica el texto para un diseño limpio */
     color: #444; /* Texto más oscuro para mejor contraste */
