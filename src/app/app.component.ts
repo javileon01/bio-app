@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +11,34 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   showHeader = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private platform: Platform) {
+    this.showSplashScreen();
+  }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Extraer la parte base de la URL usando una expresión regular
-        const baseUrlMatch = event.url.match(/^\/([^;?|#]*)/);
+        const baseUrlMatch = event.urlAfterRedirects.match(/^\/([^;?|#]*)/);
         const pageName = baseUrlMatch ? baseUrlMatch[1] : '';
         console.log('Navegado a la página:', pageName);
-  
-        // Muestra u oculta el encabezado dependiendo del nombre de la página
-        this.showHeader = !['informacio', 'contacte', 'webs-recomanats', 
-        'manual-usuari', 'glossari-def', 'questionari', 'preg-resolver'].includes(pageName);
+
+        this.showHeader = ![
+          'informacio', 
+          'contacte', 
+          'webs-recomanats', 
+          'manual-usuari', 
+          'glossari-def', 
+          'questionari', 
+          'preg-resolver'
+        ].includes(pageName);
       }
     });
-  }  
+  }
+
+  async showSplashScreen() {
+    await SplashScreen.show({
+      showDuration: 3000,
+      autoHide: true,
+    });
+  }
 }
