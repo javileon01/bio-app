@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.uv.bioapp;
 
 import com.getcapacitor.BridgeActivity;
 
