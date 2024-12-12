@@ -82,19 +82,19 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
 
 SPEC CHECKSUMS:
-  Capacitor: 05d35014f4425b0740fc8776481f6a369ad071bf
-  CapacitorApp: 07418bd6de297a82a973bc78e8717bfef9eed341
-  CapacitorBrowser: 2f247d8e94240480a5de58c1d21278dd3ecd25c7
-  CapacitorCommunitySqlite: 02c5196828046272e8d7e838701c01a8a3f1b28b
+  Capacitor: 1f3c7b9802d958cd8c4eb63895fff85dff2e1eea
+  CapacitorApp: 8b6de3ffd103b5868f3faf5bdd73759491dc6d17
+  CapacitorBrowser: 24e89f81aaf638d2eda83865f2f9541f12dc0420
+  CapacitorCommunitySqlite: d77d12ff2fc966ff54ae921e0a01c8cd6745ca67
   CapacitorCordova: b33e7f4aa4ed105dd43283acdd940964374a87d9
-  CapacitorDevice: f13f052c9a27711050ef0aa5c5add423a7edbcde
-  CapacitorFilesystem: 1f3a0fa365aed990ed552a057939e34187252287
-  CapacitorHaptics: eecddca6f52a90d068d83b075b7c7a0c2927ca80
-  CapacitorKeyboard: 2d8bb1645c554b9c3c29b9f2ed23165ef0f44491
-  CapacitorNetwork: 1b57fcde6e9fcebda85f69f4bae7558004505ca6
-  CapacitorScreenOrientation: 5f788c4e477d5339a520a7a4eef186be6b438332
-  CapacitorSplashScreen: efe2714266e56aa2a2614a7dae1bd796e2869ab8
-  CapacitorStatusBar: 2880c31fd8a7dfe5bf663617ce7d10a53bcf2fac
+  CapacitorDevice: a6466afef61d574402c18315ce62334afc61db3d
+  CapacitorFilesystem: 925840c989350d0c09742022cb6203f74d3cfaad
+  CapacitorHaptics: 28bf1b44d4ab655c9d2c4c6f6b2167514b5f817a
+  CapacitorKeyboard: ac356024d4b1423e3e8659d66e619149b883ba45
+  CapacitorNetwork: 674bd2a4913bf1e21dcfa406b2dc734f7e0a9df9
+  CapacitorScreenOrientation: 077588cbe959b18b496a8029ce81bcc6be54eeae
+  CapacitorSplashScreen: 6a981d82a03b0f8653e0ee1d26abd0446c77b623
+  CapacitorStatusBar: fc78b3c31be4a3ca916adc820e7b5faaab157062
   SQLCipher: 77fbe633cd84db04b07876dd50766b4924b57d61
   ZIPFoundation: b8c29ea7ae353b309bc810586181fd073cb3312c
 
