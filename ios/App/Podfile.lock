@@ -83,18 +83,18 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Capacitor: 1f3c7b9802d958cd8c4eb63895fff85dff2e1eea
-  CapacitorApp: 8b6de3ffd103b5868f3faf5bdd73759491dc6d17
-  CapacitorBrowser: 24e89f81aaf638d2eda83865f2f9541f12dc0420
-  CapacitorCommunitySqlite: d77d12ff2fc966ff54ae921e0a01c8cd6745ca67
+  CapacitorApp: 0bc633b4eae40a1f32cd2834788fad3bc42da6a1
+  CapacitorBrowser: ef0529d16cd8839281050c350e7bbee4f5c6d65f
+  CapacitorCommunitySqlite: 47dab3a2d9a9581a0fe7642cf9cffd34c5d5b358
   CapacitorCordova: b33e7f4aa4ed105dd43283acdd940964374a87d9
-  CapacitorDevice: a6466afef61d574402c18315ce62334afc61db3d
-  CapacitorFilesystem: 925840c989350d0c09742022cb6203f74d3cfaad
-  CapacitorHaptics: 28bf1b44d4ab655c9d2c4c6f6b2167514b5f817a
-  CapacitorKeyboard: ac356024d4b1423e3e8659d66e619149b883ba45
-  CapacitorNetwork: 674bd2a4913bf1e21dcfa406b2dc734f7e0a9df9
-  CapacitorScreenOrientation: 077588cbe959b18b496a8029ce81bcc6be54eeae
-  CapacitorSplashScreen: 6a981d82a03b0f8653e0ee1d26abd0446c77b623
-  CapacitorStatusBar: fc78b3c31be4a3ca916adc820e7b5faaab157062
+  CapacitorDevice: 1a215717f0b5061503b21a03508b0ec458a57d78
+  CapacitorFilesystem: c832a3f6d4870c3872688e782ae8e33665e6ecbf
+  CapacitorHaptics: fe689ade56ef20ec9b041a753c6da70c5d8ec9a9
+  CapacitorKeyboard: 460c6f9ec5e52c84f2742d5ce2e67bbc7ab0ebb0
+  CapacitorNetwork: da96b5fff8d05b67f4658503aabb22f65bda2c0f
+  CapacitorScreenOrientation: 3bb823f5d265190301cdc5d58a568a287d98972a
+  CapacitorSplashScreen: 68893659d77b5f82d753b3a70475082845e3039c
+  CapacitorStatusBar: 3b9ac7d0684770522c532d1158a1434512ab1477
   SQLCipher: 77fbe633cd84db04b07876dd50766b4924b57d61
   ZIPFoundation: b8c29ea7ae353b309bc810586181fd073cb3312c
 
