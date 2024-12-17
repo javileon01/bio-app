@@ -54,25 +54,47 @@ ion-button {
     font-size: 1.3em; /* Ajusta el tamaño del spinner si es necesario */
     margin-top: 0.2em; /* Ajusta el espacio entre el texto y el spinner */
   }
-  
-/* Timer fijo en la parte superior */
+
+/*
+// Timer fijo en la parte superior (android)
 .timer-fixed {
     position: fixed;
     top: 0;
-    left: 50%; /* Centrar horizontalmente */
-    transform: translateX(-50%); /* Ajusta la posición centrada */
-    margin-top: 2.8em; /* Margen para que no tape el encabezado */
-    width: 90%; /* Ajusta automáticamente el tamaño al contenido */
-    background: linear-gradient(90deg, #5a99d6, #438bc4); /* Azul suave a azul ligero */
-    color: white; /* Color del texto */
-    font-size: 1.3em; /* Tamaño del texto */
-    font-weight: bold; /* Hace el texto más destacado */
+    left: 50%; // Centrar horizontalmente
+    transform: translateX(-50%); // Ajusta la posición centrada
+    margin-top: 2.8em; // Margen para que no tape el encabezado
+    width: 90%; // Ajusta automáticamente el tamaño al contenido
+    background: linear-gradient(90deg, #5a99d6, #438bc4); // Azul suave a azul ligero
+    color: white; // Color del texto
+    font-size: 1.3em; // Tamaño del texto
+    font-weight: bold; // Hace el texto más destacado
     text-align: center;
-    padding: 8px 12px; /* Espaciado interno */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-    border-radius: 8px; /* Bordes redondeados */
-    z-index: 1000; /* Para asegurarse de que esté por encima del contenido */
-    transition: transform 0.2s ease, opacity 0.2s ease; /* Suavidad en la aparición */
+    padding: 8px 12px; // Espaciado interno
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+    border-radius: 8px; // Bordes redondeados
+    z-index: 1000; // Para asegurarse de que esté por encima del contenido
+    transition: transform 0.2s ease, opacity 0.2s ease; // Suavidad en la aparición
+}
+*/
+
+// Timer fijo en la parte superior (ios)
+.timer-fixed {
+    position: fixed;
+    top: 0;
+    left: 50%; // Centrar horizontalmente
+    transform: translateX(-50%); // Ajusta la posición centrada
+    margin-top: 5.5em; // Margen para que no tape el encabezado
+    width: 90%; // Ajusta automáticamente el tamaño al contenido
+    background: linear-gradient(90deg, #5a99d6, #438bc4); // Azul suave a azul ligero
+    color: white; // Color del texto
+    font-size: 1.3em; // Tamaño del texto
+    font-weight: bold; // Hace el texto más destacado
+    text-align: center;
+    padding: 8px 12px; // Espaciado interno
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+    border-radius: 8px; // Bordes redondeados
+    z-index: 1000; // Para asegurarse de que esté por encima del contenido
+    transition: transform 0.2s ease, opacity 0.2s ease; // Suavidad en la aparición
 }
 
 /* Efecto hover para dar respuesta visual */
