@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GlossariService {
-  private apiUrl = 'http://bioaps.uv.es/totes/'; // URL del JSON de términos
+  private apiUrl = 'http://bioaps.uv.es/perapp/totes/'; // URL del servidor
+  // private apiUrl = 'https://www.uv.es/bioaps/apps/totes.txt'; // URL en https (no funciona)
 
   constructor(private http: HttpClient) {}
 
