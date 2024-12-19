@@ -1,7 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.uv.bioapp',
+  // appId: 'com.uv.bioapp', // Utilizar para Android (npx cap sync android)
+  appId: 'com.uv.bioapp.v3', // Utilizar para iOS (npx cap sync ios)
   appName: 'BioApp',
   webDir: 'www',
   bundledWebRuntime: false,
