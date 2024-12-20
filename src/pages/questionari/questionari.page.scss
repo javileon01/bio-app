@@ -55,7 +55,7 @@ ion-button {
     margin-top: 0.2em; /* Ajusta el espacio entre el texto y el spinner */
   }
 
-
+/*
 // Timer fijo en la parte superior (android)
 .timer-fixed {
     position: fixed;
@@ -75,8 +75,9 @@ ion-button {
     z-index: 1000; // Para asegurarse de que esté por encima del contenido
     transition: transform 0.2s ease, opacity 0.2s ease; // Suavidad en la aparición
 }
+*/
 
-/*
+
 // Timer fijo en la parte superior (ios)
 .timer-fixed {
     position: fixed;
@@ -96,7 +97,6 @@ ion-button {
     z-index: 1000; // Para asegurarse de que esté por encima del contenido
     transition: transform 0.2s ease, opacity 0.2s ease; // Suavidad en la aparición
 }
-*/
 
 /* Efecto hover para dar respuesta visual */
 .timer-fixed:hover {
