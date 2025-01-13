@@ -158,6 +158,15 @@ ion-button {
     width: 100%;
 }
 
+.pregunta-imagen {
+    width: 100%;         /* Hace que la imagen ocupe el ancho completo del contenedor */
+    max-height: 300px;   /* Limita la altura máxima de la imagen */
+    object-fit: cover;   /* Asegura que la imagen se recorte bien y se ajuste al contenedor */
+    border-radius: 8px;  /* Bordes redondeados para una apariencia más suave */
+    margin-top: 1em;    /* Espacio encima de la imagen */
+    margin-bottom: 1em; /* Espacio debajo de la imagen */
+}
+
 /* Tarjeta de preguntas */
 ion-card {
     margin-bottom: 1.5em;

@@ -88,9 +88,17 @@
             <ion-card-title>{{ i + 1 }}. {{ pregunta.pregunta }}</ion-card-title>
             <ion-card-subtitle>{{ pregunta.punt }} punts</ion-card-subtitle>
           </ion-card-header>
+          
 
           <!-- Preguntas de texto -->
           <div *ngIf="esPreguntaDeTexto(pregunta)">
+            <ion-item *ngIf="pregunta.image">
+              <ion-img 
+                [src]="'http://bioaps.uv.es/site/assets/files/' + pregunta.id + '/' + pregunta.image" 
+                alt="Imagen de la pregunta"
+                class="pregunta-imagen">
+              </ion-img>
+            </ion-item>
             <ion-item 
             [color]="mostrarRespuestas && respuestas[i] && respuestas[i].trim() ? 
               (esRespuestaCorrecta(pregunta, respuestas[i]) ? 'success' : 'danger') : ''"
@@ -112,6 +120,13 @@
 
           <!-- Preguntas de selección con ion-checkbox -->
           <div *ngIf="!esPreguntaDeTexto(pregunta)">
+            <ion-item *ngIf="pregunta.image">
+              <ion-img 
+                [src]="'http://bioaps.uv.es/site/assets/files/' + pregunta.id + '/' + pregunta.image" 
+                alt="Imagen de la pregunta"
+                class="pregunta-imagen">
+              </ion-img>
+            </ion-item>
             <!-- Opción 1 -->
             <ion-item 
               *ngIf="pregunta.op1 !== 'nohay'" 
