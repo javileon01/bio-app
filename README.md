@@ -51,3 +51,11 @@ git clone https://github.com/javileon01/bio-app.git
 cd bio-app
 npm install
 ionic serve
+
+💡 Nota: la aplicación fue diseñada como híbrida y está preparada para ser empaquetada con Capacitor, pero los archivos de build nativos (android/, ios/, release/) han sido eliminados del repositorio por motivos de seguridad y privacidad.
+
+---
+## 📬 Contacto
+
+Para cualquier duda o propuesta relacionada con bioApS, no dudes en abrir un issue o contactar al desarrollador a través del perfil de GitHub.
+
