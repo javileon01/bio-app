@@ -21,8 +21,8 @@ Este repositorio contiene el código fuente completo de **bioApS**, una aplicaci
 - Ionic + Capacitor  
 - TypeScript  
 - HTML5 + CSS3  
-- LocalStorage
-- Consumo de API REST desde el servidor bioaps.uv.es para obtener datos dinámicos (glosario, cuestionarios, etc.)
+- LocalStorage  
+- Consumo de API REST desde el servidor
 
 ---
 
@@ -44,18 +44,10 @@ Puedes consultar la política de privacidad oficial de la aplicación en el sigu
 
 ## 📦 Instalación local
 
-Si deseas clonar y probar la aplicación en local:
+Si deseas clonar y probar la aplicación en local, asegúrate de tener instalados [Node.js](https://nodejs.org/), [Ionic CLI](https://ionicframework.com/docs/cli), y [Capacitor](https://capacitorjs.com/). Luego, ejecuta los siguientes comandos:
 
 ```bash
 git clone https://github.com/javileon01/bio-app.git
 cd bio-app
 npm install
 ionic serve
-
-💡 Nota: la aplicación fue diseñada como híbrida y está preparada para ser empaquetada con Capacitor, pero los archivos de build nativos (android/, ios/, release/) han sido eliminados del repositorio por motivos de seguridad y privacidad.
-
----
-## 📬 Contacto
-
-Para cualquier duda o propuesta relacionada con bioApS, no dudes en abrir un issue o contactar al desarrollador a través del perfil de GitHub.
-
