@@ -68,3 +68,11 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Archivos y carpetas sensibles
+app/release/private_key.pepk
+app/release/*.aab
+app/release/*.apk
+android/
+ios/
+
